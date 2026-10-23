@@ -4,8 +4,8 @@ After=network.target 719agent-demo-backend.service
 
 [Service]
 Environment="PATH=/home/xjx/.nvm/versions/node/v22.23.3/bin:/home/xjx/.local/bin:/usr/local/bin:/usr/bin:/bin"
-Environment="NO_PROXY=localhost,127.0.0.1,100.64.0.6,100.64.0.17"
-Environment="no_proxy=localhost,127.0.0.1,100.64.0.6,100.64.0.17"
+Environment="NO_PROXY=localhost,127.0.0.1,100.64.0.7,100.64.0.17"
+Environment="no_proxy=localhost,127.0.0.1,100.64.0.7,100.64.0.17"
 Type=simple
 WorkingDirectory=/home/xjx/opencode-agent-demo
 ExecStart=/home/xjx/opencode-agent-demo/.venv/bin/python -m uvicorn apps.tailnet_gateway:app --host 127.0.0.1 --port 18080 --workers 1 --no-proxy-headers
