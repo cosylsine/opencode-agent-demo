@@ -305,7 +305,8 @@ async def test_timeout_recovers_without_reposting():
     client.http = httpx.AsyncClient(
         base_url="http://localhost", transport=httpx.MockTransport(handle)
     )
-    output = await client.prompt("ses_1", "monitor", {}, MonitorOutput)
+    # Probe payload isolates uncertain HTTP delivery from business preparation.
+    output = await client.prompt("ses_1", "monitor", {"readiness_probe": True}, MonitorOutput)
     assert output == result
     assert sum(method == "POST" for method, _ in calls) == 1
     await client.close()

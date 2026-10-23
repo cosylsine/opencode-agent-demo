@@ -50,7 +50,15 @@ async def main(base, output, protocol_only=False):
                 "title": "办公闭环验收技能",
                 "description": "核对人员工时并生成周报。",
                 "inputs": "XLSX，首行为人员和工时。",
-                "instructions": "读取表格，校验人员必填和工时非负，使用工具按人员汇总工时，再生成含汇总表的 Word 周报。",
+                "instructions": (
+                    "每轮都读取原始工作记录，校验人员必填和工时非负，"
+                    "使用 transform_table 按人员分组、对工时求和。"
+                    "生成 Word 周报时，必须把本轮 transform_table 返回的文件 ID "
+                    "传给 generate_document.table_file_id，直接插入真实 Word 汇总表；"
+                    "不要手工重抄汇总值，也不要用段落或 Markdown 管道文本代替表格。"
+                    "正文简要说明数据来源和校验结果。后续轮次保留原文件及既有产物，"
+                    "重新生成汇总文件和周报。"
+                ),
                 "tools": ["read_table", "validate_table", "transform_table", "generate_document"],
             },
             headers=headers(),
@@ -112,8 +120,11 @@ async def main(base, output, protocol_only=False):
             document_response = await client.get(file["download_url"])
             document_response.raise_for_status()
             document = Document(io.BytesIO(document_response.content))
-            values = [c.text for table in document.tables for row in table.rows for c in row.cells]
-            if "张三" not in values or not any(value in ("5", "5.0") for value in values):
+            rows = [[c.text for c in row.cells] for table in document.tables for row in table.rows]
+            if not all(
+                any(person in row and any(value in (str(total), f"{total}.0") for value in row) for row in rows)
+                for person, total in (("张三", 5), ("李四", 4))
+            ):
                 raise RuntimeError("生成文档缺少已核对的汇总结果")
             evidence["turns"].append(
                 {
@@ -125,11 +136,18 @@ async def main(base, output, protocol_only=False):
                 }
             )
         previous = evidence["turns"][0]["file_id"]
-        assert (await client.get(f"/api/v1/files/{previous}/download")).is_success
+        previous_response = await client.get(f"/api/v1/files/{previous}/download")
+        previous_response.raise_for_status()
+        assert hashlib.sha256(previous_response.content).hexdigest() == evidence["turns"][0]["sha256"]
+        assert evidence["turns"][1]["file_id"] != previous
+        original_response = await client.get(f"/api/v1/files/{file_id}/download")
+        original_response.raise_for_status()
+        assert original_response.content == buffer.getvalue()
         evidence.update(
             conversation_id=conversation_id,
             skill_id=skill["id"],
             agent_id=agent["id"],
+            original_and_previous_files_unchanged=True,
             model=(await client.get("/api/v1/models")).json(),
             success=True,
         )

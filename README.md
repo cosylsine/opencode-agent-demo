@@ -22,6 +22,8 @@ npm run build --prefix apps/dashboard
 
 当前 WSL 服务、模型接入、账号、日志、验收与回退见 [Tailnet 运行手册](docs/runbooks/wsl-deployment.md)。后端仅使用一个 worker；OpenCode、后端和模型内部接口不对外直接开放。
 
+本次同步的基线、数据保留和实际验收结果见 [2026-10-23 同步记录](docs/runbooks/tailnet-sync-20261023.md)。
+
 ## 检查
 
 ```bash
@@ -38,6 +40,8 @@ npm run test:browser --prefix apps/dashboard
 Monitor 读取持续运行的示例回路。B 回路由真实 Control Agent 提出参数候选，平台逐工况仿真并裁决。ST 功能生成审查、注释、修复与测试草稿，执行结构和受限扫描逻辑检查；尚未调用目标 PLC 编译器或执行目标 PLC 测试。平台没有真实设备参数下发能力。
 
 办公资源按账号隔离，公共资源与发布版本受权限控制。登录 Cookie、CSRF、附件上传和下载经 Tailnet 网关转发；网关不向不同用户共享上游会话。
+
+本次首版发布保留 ST、Monitor 的模型输出与任务完成率问题；两者尚未通过完整真实业务验收，新的 B 回路真实候选评测也未完成。已通过的基础检查、办公验收及后续事项详见同步记录。
 
 ## 版本与内网交付
 

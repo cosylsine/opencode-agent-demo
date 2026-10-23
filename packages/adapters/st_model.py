@@ -12,6 +12,7 @@ from pathlib import Path
 import httpx
 from pydantic import ValidationError
 
+from packages.contracts.st_code import STRepairStage
 from packages.domain.core import DomainError
 
 
@@ -35,6 +36,17 @@ def model_connection(settings):
 
 async def generate(settings, schema, payload, instruction, request_id):
     url, key = model_connection(settings)
+    output_schema = schema.model_json_schema()
+    if schema is STRepairStage:
+        # Keep historical checkpoints/contracts compatible while constraining new
+        # model prose. The replacement code retains its existing size allowance.
+        output_schema["$defs"]["STSourceEdit"]["properties"]["explanation"]["maxLength"] = 240
+        if plan := payload.get("single_edit_repair"):
+            output_schema["properties"]["edits"].update(minItems=1, maxItems=1)
+            edit = output_schema["$defs"]["STSourceEdit"]["properties"]
+            edit["line_start"]["const"] = plan["line_start"]
+            edit["line_end"]["const"] = plan["line_end"]
+            edit["bug_ids"]["items"]["enum"] = plan["allowed_bug_ids"]
     body = dict(
         model=settings.model,
         temperature=0.0,
@@ -44,7 +56,7 @@ async def generate(settings, schema, payload, instruction, request_id):
             "type": "json_schema",
             "json_schema": {
                 "name": schema.__name__,
-                "schema": schema.model_json_schema(),
+                "schema": output_schema,
                 "strict": True,
             },
         },

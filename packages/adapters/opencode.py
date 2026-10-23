@@ -14,6 +14,13 @@ from pydantic import ValidationError
 
 from packages.domain.core import DomainError
 
+MONITOR_TRANSPORT_LIMITS = {"evidence": 65536, "warnings": 32768}
+MONITOR_READ_TOOLS = ("get_recent_window", "calculate_metrics", "detect_state")
+MONITOR_SKILLS = ("steam-system-monitoring", "control-safety")
+MONITOR_CONTEXT_TIMEOUT_SECONDS = 20
+MODEL_PROBE_TIMEOUT_SECONDS = 60
+MODEL_PROBE_ABORT_TIMEOUT_SECONDS = 5
+
 
 def effective_permission(rules, permission, resource="*"):
     action = "ask"
@@ -125,6 +132,110 @@ class OpenCodeClient:
         except Exception:
             raise DomainError("CONTROL_CONTEXT_UNAVAILABLE", "程序未能取得本轮完整授权上下文，尚未发起模型请求", 503) from None
 
+    def monitor_skills(self):
+        from packages.adapters.catalog import _frontmatter, _skill_directory
+
+        skills = {}
+        try:
+            for name in MONITOR_SKILLS:
+                directory = _skill_directory(self.settings.catalog_root, name)
+                path = directory / "SKILL.md"
+                if directory.is_symlink() or path.is_symlink():
+                    raise ValueError("symlink")
+                with path.open("rb") as stream:
+                    raw = stream.read(16385)
+                fields, content = _frontmatter(raw.decode("utf-8"))
+                if len(raw) > 16384 or fields.get("name") != name or not content.strip():
+                    raise ValueError("invalid skill")
+                skills[name] = {"sha256": hashlib.sha256(raw).hexdigest(), "content": content.strip()}
+        except (OSError, UnicodeError, ValueError, DomainError):
+            raise DomainError("MONITOR_SKILLS_UNAVAILABLE", "内置监测技能缺失或无效，尚未发起模型请求", 503) from None
+        return skills
+
+    async def monitor_context(self, payload):
+        """Perform all three authorized MCP reads before any Monitor inference.
+
+        The existing internal tool endpoint owns token scope and MCP_READ audit.
+        Frozen request values are consistency checks, never a fallback for a
+        failed read. Only validated data is delivered to the model.
+        """
+        from mcp import ClientSession, StdioServerParameters
+        from mcp.client.stdio import stdio_client
+
+        from packages.contracts.agents import MonitorRequest, RuleAssessment
+        from packages.contracts.observations import (
+            Metrics,
+            PidSnapshot,
+            QualityReport,
+            SeriesArtifact,
+            SeriesPoint,
+        )
+
+        try:
+            request = MonitorRequest.model_validate_json(json.dumps(payload))
+            if request.source_kind != "EXAMPLE" or not self.settings.service_token:
+                raise ValueError("invalid source or service configuration")
+            params = StdioServerParameters(
+                command=sys.executable, args=["-m", "apps.mcp_server"],
+                cwd=str(self.settings.catalog_root),
+                env={"PATH": os.environ.get("PATH", ""),
+                     "MCP_SERVICE_TOKEN": self.settings.service_token,
+                     "INTERNAL_API_BASE_URL": os.environ.get("INTERNAL_API_BASE_URL", "http://127.0.0.1:18000/internal/v1")},
+            )
+            context = {}
+            async with asyncio.timeout(MONITOR_CONTEXT_TIMEOUT_SECONDS):
+                async with stdio_client(params) as (read, write):
+                    async with ClientSession(read, write) as client:
+                        await client.initialize()
+                        for name in MONITOR_READ_TOOLS:
+                            result = await client.call_tool(name, {"call_context_token": request.call_context_token})
+                            if result.isError:
+                                raise ValueError("tool error")
+                            value = result.structuredContent
+                            if value is None:
+                                value = json.loads("".join(item.text for item in result.content if item.type == "text"))
+                            if (not isinstance(value, dict) or value.get("schema_version") != "1.0"
+                                or "error" in value or not isinstance(value.get("data"), dict)):
+                                raise ValueError("invalid tool envelope")
+                            context[name] = value["data"]
+            window = context["get_recent_window"]
+            if (set(window) != {"snapshot_id", "series", "points", "actual_pid", "quality", "source_kind"}
+                or window["snapshot_id"] != request.snapshot_id
+                or window["source_kind"] != "EXAMPLE"
+                or PidSnapshot.model_validate_json(json.dumps(window["actual_pid"])) != request.actual_pid
+                or QualityReport.model_validate_json(json.dumps(window["quality"])) != request.quality):
+                raise ValueError("window does not match frozen request")
+            series = SeriesArtifact.model_validate_json(json.dumps(window["series"]))
+            points = window["points"]
+            if (not isinstance(points, list) or len(points) != series.sample_count
+                or len(points) != request.quality.sample_count):
+                raise ValueError("invalid window samples")
+            for point in points:
+                SeriesPoint.model_validate_json(json.dumps(point))
+            observed = Metrics.model_validate_json(json.dumps(context["calculate_metrics"]))
+            assessment = RuleAssessment.model_validate_json(json.dumps(context["detect_state"]))
+            if observed != request.metrics or assessment != request.rule_assessment:
+                raise ValueError("metrics or rule do not match frozen request")
+            # Credentials belong only to the authorized MCP exchange, including
+            # when a malformed tool result attempts to echo one in its data.
+            encoded = json.dumps(context)
+            if request.call_context_token in encoded or self.settings.service_token in encoded:
+                raise ValueError("credential in context")
+            return context
+        except Exception:
+            raise DomainError("MONITOR_CONTEXT_UNAVAILABLE", "程序未能取得本轮完整授权监测数据，尚未发起模型请求", 503) from None
+
+    async def prepare_monitor(self, payload):
+        skills = self.monitor_skills()
+        context = await self.monitor_context(payload)
+        prepared = payload.copy()
+        prepared.pop("call_context_token")
+        prepared["monitor_context"] = context
+        prepared["skills_preloaded"] = [
+            {"name": name, "sha256": item["sha256"]} for name, item in skills.items()
+        ]
+        return prepared, skills
+
     @staticmethod
     def message_id(session):
         # One prompt per unique session. The ID survives process restarts without
@@ -188,9 +299,19 @@ class OpenCodeClient:
             raise DomainError("RESULT_UNKNOWN")
         try:
             structured = info["structured"]
-            from packages.contracts.agents import ControlOutput
+            from packages.contracts.agents import ControlOutput, MonitorOutput
 
-            if schema is ControlOutput and isinstance(structured, dict):
+            if schema is MonitorOutput and isinstance(structured, dict):
+                structured = structured.copy()
+                for key, limit in MONITOR_TRANSPORT_LIMITS.items():
+                    value = structured.get(key)
+                    if isinstance(value, str):
+                        if len(value) > limit:
+                            raise ValueError("Monitor transport field exceeds limit")
+                        # Decode only declared StructuredOutput fields, never
+                        # free text. The original public types remain mandatory.
+                        structured[key] = json.loads(value)
+            elif schema is ControlOutput and isinstance(structured, dict):
                 structured = structured.copy()
                 if workflow is not None:
                     receipt = structured.pop("context_receipt", None)
@@ -331,10 +452,24 @@ class OpenCodeClient:
 
     async def prompt(self, session, role, payload, schema, correction="", *, workflow=None):
         readiness = payload.get("readiness_probe") is True
-        from packages.contracts.agents import ControlOutput
+        from packages.contracts.agents import ControlOutput, MonitorOutput
 
+        monitor_skills = None
+        if schema is MonitorOutput and not readiness:
+            payload, monitor_skills = await self.prepare_monitor(payload)
         model_schema = schema.model_json_schema()
-        if schema is ControlOutput:
+        if schema is MonitorOutput:
+            for key, limit in MONITOR_TRANSPORT_LIMITS.items():
+                description = (
+                    'JSON 数组字符串，每项仅包含 feature（字符串）、value（数值）、'
+                    'interpretation（中文说明），最多 10 项；无证据填写 "[]"'
+                    if key == "evidence" else
+                    'JSON 数组字符串，每项为中文警告文本，最多 10 项；无警告填写 "[]"'
+                )
+                model_schema["properties"][key] = {
+                    "type": "string", "maxLength": limit, "description": description,
+                }
+        elif schema is ControlOutput:
             # This model serializes nested tool arguments as strings. Make that
             # transport explicit so OpenCode stops after one valid tool call;
             # extract_latest parses them and validates the public schema.
@@ -368,10 +503,36 @@ class OpenCodeClient:
                 }
             ],
         }
+        if schema is MonitorOutput:
+            body["system"] = (
+                "必须用 StructuredOutput 工具提交符合本次 JSON Schema 的对象，不能只返回 JSON 文本。"
+                "业务请求的 steam-system-monitoring 和 control-safety 已由后端校验并预加载。"
+                "后端已用本轮授权通过 MCP 各读取一次 get_recent_window、calculate_metrics、detect_state，"
+                "完整结果在 monitor_context 的同名字段中；只能根据这些冻结的真实读取结果判断。"
+                "准备流程已完成，不再调用 skill 或三个读取工具，只调用一次 StructuredOutput。"
+                "readiness_probe=true 时无需 skill 或 MCP 调用。"
+                "evidence 和 warnings 在工具参数中必须填 JSON 数组的字符串，空数组填写 \"[]\"。"
+                "evidence 每项仅含 feature 字符串、value 数值、interpretation 中文说明，"
+                "value 不得写成字符串；warnings 每项为中文文本。"
+                "后端解析后仍严格校验原始数组、字段、数值及长度约束。"
+                "reason、evidence.interpretation 和 warnings 必须使用简体中文；"
+                "枚举、参数名和错误码保持契约原值。"
+            )
+            if monitor_skills is not None:
+                body["system"] += "\n\n" + "\n\n".join(
+                    f"<preloaded_skill name={name} sha256={item['sha256']}>\n"
+                    f"{item['content']}\n</preloaded_skill>" for name, item in monitor_skills.items()
+                )
+                body["tools"].update({"skill": False, **{
+                    "industrial_control_" + name: False for name in MONITOR_READ_TOOLS
+                }})
         if workflow is not None:
             body["system"] += "\n\n" + workflow.system()
             body["tools"].update({"skill": False, "industrial_control_get_tuning_context": False})
         if readiness:
+            # The deployment model defines a small output budget for this
+            # fixed probe; business calls retain their normal generation limit.
+            body["variant"] = "readiness"
             body["tools"].update(
                 {
                     "skill": False,
@@ -575,7 +736,18 @@ class OpenCodeClient:
 
         return await generate(self.settings, schema, payload, instruction, request_id)
 
-    async def probe(self):
+    async def _abort_probe(self, session):
+        if session is None:
+            return
+        try:
+            async with asyncio.timeout(MODEL_PROBE_ABORT_TIMEOUT_SECONDS):
+                await self.abort(session)
+        except Exception:
+            # Preserve the timeout/cancellation result even if cleanup cannot
+            # confirm remote termination. Never repost this probe's prompt.
+            pass
+
+    async def probe(self, *, timeout_seconds=MODEL_PROBE_TIMEOUT_SECONDS):
         if (
             not self.settings.provider
             or not self.settings.model
@@ -584,31 +756,42 @@ class OpenCodeClient:
         ):
             self.ready, self.error_code = False, "MODEL_NOT_CONFIGURED"
             return
+        session = None
         try:
-            health = await self.api("GET", "/global/health", timeout=5)
-            self.version = health["version"]
-            if self.version != "1.18.31":
-                raise DomainError("OPENCODE_VERSION_MISMATCH")
-            agents = await self.api("GET", "/agent", timeout=5)
-            verify_permissions(agents)
-            mcp = await self.api("GET", "/mcp", timeout=10)
-            if mcp.get("industrial_control", {}).get("status") != "connected":
-                raise DomainError("MCP_NOT_READY")
-            from packages.contracts.agents import MonitorOutput
+            # HTTP read timeouts restart whenever streaming bytes arrive. Bound
+            # the entire readiness attempt even if OpenCode keeps sending data.
+            async with asyncio.timeout(timeout_seconds):
+                health = await self.api("GET", "/global/health", timeout=5)
+                self.version = health["version"]
+                if self.version != "1.18.31":
+                    raise DomainError("OPENCODE_VERSION_MISMATCH")
+                agents = await self.api("GET", "/agent", timeout=5)
+                verify_permissions(agents)
+                mcp = await self.api("GET", "/mcp", timeout=10)
+                if mcp.get("industrial_control", {}).get("status") != "connected":
+                    raise DomainError("MCP_NOT_READY")
+                from packages.contracts.agents import MonitorOutput
 
-            session = await self.create_session("readiness/structured-model-probe")
-            await self.prompt(
-                session,
-                "monitor",
-                {
-                    "readiness_probe": True,
-                    "instruction": "Return NORMAL_STABLE, confidence 1, needs_tuning false, "
-                    "manual_review_required false, empty evidence/warnings, reason readiness. "
-                    "This probe has no call token: do not call MCP.",
-                },
-                MonitorOutput,
-            )
+                session = await self.create_session("readiness/structured-model-probe")
+                await self.prompt(
+                    session,
+                    "monitor",
+                    {
+                        "readiness_probe": True,
+                        "instruction": "Return NORMAL_STABLE, confidence 1, needs_tuning false, "
+                        "manual_review_required false, empty evidence/warnings, reason readiness. "
+                        "This probe has no call token: do not call MCP.",
+                    },
+                    MonitorOutput,
+                )
             self.ready, self.error_code = True, None
+        except TimeoutError:
+            self.ready, self.error_code = False, "MODEL_PROBE_TIMEOUT"
+            await self._abort_probe(session)
+        except asyncio.CancelledError:
+            self.ready, self.error_code = False, "MODEL_PROBE_CANCELLED"
+            await self._abort_probe(session)
+            raise
         except (httpx.HTTPError, DomainError, KeyError, ValueError) as exc:
             self.ready = False
             self.error_code = exc.code if isinstance(exc, DomainError) else "OPENCODE_UNAVAILABLE"

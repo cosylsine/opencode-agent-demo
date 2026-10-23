@@ -16,6 +16,8 @@
 
 2026-10-23 已通过只读远端查询核对模型网关与 GPU 对应关系。应用部署不启动或重启远端 vLLM，也不改变其他 GPU 服务。
 
+当前 provider 在模型级 `options.chat_template_kwargs` 中明确设置 `enable_thinking=false`。`variants.readiness.max_tokens=512` 只用于结构化就绪探测，业务请求保留 8192 输出额度；已通过固定版本 OpenCode 的实际请求体验证。就绪探测总时限为 60 秒，超时后最多再用 5 秒取消自己的会话并报告 `MODEL_PROBE_TIMEOUT`，不会重发不确定的业务请求。若使用另一 provider 配置，应保留该 readiness variant。
+
 ## 私有配置与账号
 
 实际配置为 `deploy/runtime/runtime.env` 和 `deploy/runtime/provider.vllm-gpu123.json`，权限为 0600，目录为 0700。配置模板分别是 `deploy/runtime.env.example` 与 `deploy/provider.vllm-gpu123.example.json`。`DEMO_MODEL_API_KEY` 由运行环境提供，provider 只保留环境变量引用。
@@ -60,6 +62,15 @@ npm run test:browser --prefix apps/dashboard
 ```
 
 验收脚本交互读取账号密码，也可使用其规定的环境变量。不要把密码放在命令行参数或提交日志中。真实验收会使用模型并创建属于验收账号的任务。浏览器测试只证明界面与测试后端链路，不能替代真实模型验收。
+
+WSL 上与采样器并行跑 Python 回归时，可把测试临时目录放入内存文件系统，避免大量测试数据库的同步写入拖慢每秒采样；正式运行数据仍位于 `var/backend/`。本次完整回归使用了这种方式：
+
+```bash
+test_tmp_dir=$(mktemp -d /dev/shm/opencode-tests.XXXXXX)
+PYTEST_ADDOPTS="--basetemp=$test_tmp_dir" bash scripts/check.sh
+```
+
+磁盘繁忙或主机暂停仍可能产生真实采样缺口。出现 `TELEMETRY_WINDOW_NOT_READY` 时检查采样进程、磁盘延迟及最新数据时间，等待恢复连续窗口，不清空历史或补造样本。
 
 ## 备份与回退
 

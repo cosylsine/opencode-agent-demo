@@ -35,6 +35,7 @@ async def main(base, min_b_candidates=1):
             )
             response.raise_for_status()
             run_id = response.json()["run_id"]
+            print(f"Monitor scenario={scenario} run_id={run_id}", flush=True)
             for _ in range(460):
                 run = (await client.get("/api/v1/runs/" + run_id)).json()
                 if run["status"] in TERMINAL:
@@ -47,6 +48,20 @@ async def main(base, min_b_candidates=1):
             roles = {x["role"] for x in tools}
             if run["source_kind"] != "EXAMPLE" or "monitor" not in roles:
                 raise SystemExit("Real integration FAILED: missing EXAMPLE/Monitor MCP evidence")
+            required_reads = {"get_recent_window", "calculate_metrics", "detect_state"}
+            monitor_reads = {}
+            for item in tools:
+                if item.get("role") == "monitor":
+                    monitor_reads.setdefault(item.get("request_id"), []).append(item.get("tool"))
+            if None in monitor_reads or any(
+                len(reads) != 3 or any(reads.count(tool) != 1 for tool in required_reads)
+                for reads in monitor_reads.values()
+            ):
+                raise SystemExit("Real integration FAILED: Monitor did not read all three tools once per request")
+            if scenario == "normal" and (
+                run["status"] != "NO_TUNING_REQUIRED" or run["stop_reason"] != "NORMAL_STABLE"
+            ):
+                raise SystemExit("Real integration FAILED: normal Monitor result was not stable")
             if scenario == "improvable" and (
                 run["status"] != "MANUAL_REVIEW_REQUIRED"
                 or run["stop_reason"] != "SIMULATION_TUNING_SUGGESTED"
@@ -71,6 +86,7 @@ async def main(base, min_b_candidates=1):
         response = await client.post("/api/v1/tuning-runs", json={"schema_version": "1.0"}, headers=headers)
         response.raise_for_status()
         b_id = response.json()["run_id"]
+        print(f"B-loop run_id={b_id}", flush=True)
         for _ in range(180 * min_b_candidates):
             run = (await client.get("/api/v1/tuning-runs/" + b_id)).json()
             if len(run["trials"]) >= min_b_candidates + 1 or run["status"] in ("COMPLETED", "FAILED", "CANCELLED", "AGENT_ABSTAINED", "NO_SAFE_CANDIDATE"):
@@ -90,8 +106,19 @@ async def main(base, min_b_candidates=1):
             raise SystemExit("Real integration FAILED: missing per-round Control MCP evidence")
         if run["status"] not in ("COMPLETED", "AGENT_ABSTAINED", "FAILED", "CANCELLED", "NO_SAFE_CANDIDATE"):
             headers["Idempotency-Key"] = str(uuid.uuid4())
-            await client.post("/api/v1/tuning-runs/" + b_id + "/cancel", json={"schema_version": "1.0"}, headers=headers)
+            cancelled = await client.post("/api/v1/tuning-runs/" + b_id + "/cancel", json={"schema_version": "1.0"}, headers=headers)
+            cancelled.raise_for_status()
+            for _ in range(15):
+                terminal = (await client.get("/api/v1/tuning-runs/" + b_id)).raise_for_status().json()
+                if terminal["status"] in ("COMPLETED", "AGENT_ABSTAINED", "CANCELLED", "NO_SAFE_CANDIDATE"):
+                    break
+                await asyncio.sleep(2)
+            else:
+                raise SystemExit("Real integration FAILED: B acceptance task did not stop")
+        else:
+            terminal = run
         evidence.append({"run_id": b_id, "source_kind": run["source_kind"], "status": run["status"],
+                         "final_status": terminal["status"],
                          "trials": len(run["trials"]), "events": len(audit), "tools": tools,
                          "min_b_candidates": min_b_candidates})
         path = Path(os.environ.get("DEMO_STATE_DIR", "var/backend")) / "real-integration.json"
