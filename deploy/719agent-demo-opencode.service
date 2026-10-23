@@ -1,0 +1,22 @@
+[Unit]
+Description=719agent Dedicated OpenCode 1.18.31
+After=network.target
+
+[Service]
+Environment="PATH=/home/xjx/.nvm/versions/node/v22.23.3/bin:/home/xjx/.local/bin:/usr/local/bin:/usr/bin:/bin"
+Environment="NO_PROXY=localhost,127.0.0.1,100.64.0.6,100.64.0.17"
+Environment="no_proxy=localhost,127.0.0.1,100.64.0.6,100.64.0.17"
+Type=simple
+WorkingDirectory=/home/xjx/opencode-agent-demo
+EnvironmentFile=/home/xjx/opencode-agent-demo/deploy/runtime/runtime.env
+ExecStart=/home/xjx/opencode-agent-demo/.venv/bin/python scripts/launch_opencode.py
+Restart=on-failure
+RestartSec=5
+KillMode=control-group
+TimeoutStopSec=20
+NoNewPrivileges=true
+PrivateTmp=true
+UMask=0077
+
+[Install]
+WantedBy=default.target

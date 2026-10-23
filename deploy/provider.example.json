@@ -1,0 +1,10 @@
+{
+  "provider": {
+    "project-llm": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Dedicated project provider",
+      "options": {"baseURL": "https://REPLACE-ME/v1", "apiKey": "{env:DEMO_MODEL_API_KEY}"},
+      "models": {"REPLACE-MODEL": {"name": "Configured model", "tool_call": true}}
+    }
+  }
+}

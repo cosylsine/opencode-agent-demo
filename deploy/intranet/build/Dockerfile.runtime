@@ -1,0 +1,17 @@
+# 制作阶段的依赖镜像配方。交付时该镜像已经导出，现场无需联网构建。
+FROM debian:bookworm-slim
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends ca-certificates git libstdc++6 libatomic1 \
+ && rm -rf /var/lib/apt/lists/*
+COPY vendor/python/ /opt/python/
+COPY vendor/python-packages/ /opt/venv/lib/python3.13/site-packages/
+COPY vendor/node/ /opt/node/
+COPY vendor/opencode /opt/bin/opencode
+COPY vendor/opencode-node-modules/ /opt/opencode-deps/node_modules/
+COPY vendor/package.json vendor/package-lock.json /opt/opencode-deps/
+COPY vendor/dashboard-node-modules/ /opt/dashboard/node_modules/
+ENV PATH=/opt/venv/bin:/opt/python/bin:/opt/node/bin:/opt/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
+    LANG=C.UTF-8
+RUN /opt/python/bin/python3.13 -m venv --without-pip /opt/venv \
+ && python -c "import numpy, fastapi, mcp, sqlalchemy, ssl; print('runtime imports OK')" \
+ && node --version && /opt/bin/opencode --version

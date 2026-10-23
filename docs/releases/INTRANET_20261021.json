@@ -1,0 +1,1473 @@
+{
+  "release": "INTRANET_20261021",
+  "release_date": "2026-10-21",
+  "source": "delivery/intranet-20261021/disc-01/payload/source",
+  "disc_manifest_sha256": "d23af62d030ae57c1045c323dcdaf1f71fe8dface95efd13716488a325eb8d03",
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "3613e0882f4e48df01444ac2bab4dd395141508215ce8a6a92c2343ffa8d5ac2",
+      "included_in_source_git": true
+    },
+    {
+      "path": ".opencode/.gitignore",
+      "sha256": "663a068e76d264d0bc6740f5450b6c4193c7b41ecf5e0dc222485b8a17404d95",
+      "included_in_source_git": true
+    },
+    {
+      "path": ".opencode/agents/control.md",
+      "sha256": "27c221ac82e2ae027e42078b7aad84116bf2e3bc4c3caf3e623024b4508e606e",
+      "included_in_source_git": true
+    },
+    {
+      "path": ".opencode/agents/monitor.md",
+      "sha256": "dfa9b88af2adac228404ef9c4c3d6aad0e59d36036a4c077f3376de93719fc89",
+      "included_in_source_git": true
+    },
+    {
+      "path": ".opencode/agents/office.md",
+      "sha256": "0671af5f51fe215c2eb2c8962d3299fa934a2471b63657d9a0a739e1fecb668a",
+      "included_in_source_git": true
+    },
+    {
+      "path": ".opencode/agents/reception.md",
+      "sha256": "b7cc4423782223f37d2ad0d51aeb9bf523487a66924d5adb6ddc0b32edbb30bb",
+      "included_in_source_git": true
+    },
+    {
+      "path": ".opencode/agents/st-code.md",
+      "sha256": "9dbae4481ba7a7c1edf63973c7c634bb0d984a872f0732dd532ab7f78a26ae8b",
+      "included_in_source_git": true
+    },
+    {
+      "path": ".opencode/package-lock.json",
+      "sha256": "da64acae5c32d10d5627ac7be47bb2c8dfbf3d377372482983be3a0eee0a9b93",
+      "included_in_source_git": true
+    },
+    {
+      "path": ".opencode/package.json",
+      "sha256": "5c9a30456576bfed97d6c33daab9cbd167dd29ee7ca91f4c9ad40c3b31781e8d",
+      "included_in_source_git": true
+    },
+    {
+      "path": ".opencode/skills/control-safety/SKILL.md",
+      "sha256": "abcad5df8371fd5d01adf66dd8701b7cce34dfcc2e85808becccc55a03983bde",
+      "included_in_source_git": true
+    },
+    {
+      "path": ".opencode/skills/pid-tuning/SKILL.md",
+      "sha256": "c74444eeda65f312232ec0f3be4f4607c69f53e40378ffab5a5e1d5e0defb9d7",
+      "included_in_source_git": true
+    },
+    {
+      "path": ".opencode/skills/steam-system-monitoring/SKILL.md",
+      "sha256": "f648ba976f13c0249059bfbb6528fc579e67b144c340c0db1451d10c19262f5c",
+      "included_in_source_git": true
+    },
+    {
+      "path": "DESIGN.md",
+      "sha256": "6a01960152cdf1ac7ce02eca312aaa445941a3006c8858fe318ff5bb888c977a",
+      "included_in_source_git": true
+    },
+    {
+      "path": "PRODUCT.md",
+      "sha256": "1beb8ac3af11bac69b4dcc71e198745df70ea73d0fc85e0deb255d61e324b194",
+      "included_in_source_git": true
+    },
+    {
+      "path": "README.md",
+      "sha256": "a502d768071a6cc2e35c45bec2db3d5f0c02a868e88decc637bb6c867bf3a226",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/dist/assets/chart-renderer-BvYRaZkt.js",
+      "sha256": "a9fb87a0a5e80dd2f4c1dd25ab2a7755b1c53fe73133b7f517e2b2a240d7bf1e",
+      "included_in_source_git": false
+    },
+    {
+      "path": "apps/dashboard/dist/assets/charts-CitphQpv.js",
+      "sha256": "4789bb5108480c47b465a8d66e53eaee19e4bddc046f8ba625b11f3cf8e5cd5b",
+      "included_in_source_git": false
+    },
+    {
+      "path": "apps/dashboard/dist/assets/index-CoISsrqn.css",
+      "sha256": "6a3ae476e5682791f4e7c9a9f09eab06ff9ef3d59abc3407d714f2b395435092",
+      "included_in_source_git": false
+    },
+    {
+      "path": "apps/dashboard/dist/assets/index-Dz8nC9b0.js",
+      "sha256": "a26ec612df58cec7469560346d6c2d141bd7fa8b4bcd4b4f91ece186e7a97756",
+      "included_in_source_git": false
+    },
+    {
+      "path": "apps/dashboard/dist/assets/react-UxZENBTg.js",
+      "sha256": "d8ed4cfcec004fe8be98aaf8991d83f94c461f6eafc2ae155a69e3e1bfd17fcc",
+      "included_in_source_git": false
+    },
+    {
+      "path": "apps/dashboard/dist/index.html",
+      "sha256": "8bbbee4be2c2f49868111d52f260b6aa1d705b690dd884426fe17137497b023c",
+      "included_in_source_git": false
+    },
+    {
+      "path": "apps/dashboard/index.html",
+      "sha256": "ff8aedfeea756b7041b34d0fbb701a9e3d7fd04ebef4b8952066437c0189b1e6",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/package-lock.json",
+      "sha256": "01b745ad4ca307ce79c05dd35f4d0f12e37e9742ba38efb630e8f2dc2ecc24ad",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/package.json",
+      "sha256": "537c2161559290d6d6d9bfd2ef05b8fd741519f5521ca2c115a3d9a7b009fa5b",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/playwright.config.ts",
+      "sha256": "5e3a29e7431f1b397c8d1e5806141a227014b6d296b7c3bf0534ab90dcbad72d",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/src/api.generated.ts",
+      "sha256": "caf1b835c60f02706602905bad3657bbee58fdbfd5f85520ff9143eddc79af07",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/src/assets/opencode-logo.svg",
+      "sha256": "00ac8ac1b456ac230499fa76c08205d7658e29c383cd635669780c644fdcd321",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/src/auto-textarea.tsx",
+      "sha256": "994fc5e645aad54426537f1f07040636ade60cd175445b647dedcbf7cd4bfc99",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/src/business.css",
+      "sha256": "9145e99d0312d4a3aa8d4366aff266f23511b281f89fa31b7e2d77a8c606ea5a",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/src/catalog.tsx",
+      "sha256": "ba954f6548848ed16c9827021b4393bdb03381d27c130407f32c2ba67231eef9",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/src/chat-scroll.ts",
+      "sha256": "31f0be7c8bf0713967c0d3cc1453a030097c6501c7211bc5da95e31c704f13f4",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/src/chat.css",
+      "sha256": "39d32c920ed0d96cf1dd6ce90178676608991b80bca58b36d2f82d3b4a8c9b03",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/src/legacy-history.tsx",
+      "sha256": "25d16744ab956fbbd712d45ea91c9aafabed158651a65db5204831c9c1337bce",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/src/main.tsx",
+      "sha256": "3ee63a85456737d6fd2d101d7254f125d4c92f22da2eca9ea99d04e1dc92b334",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/src/office-api.tsx",
+      "sha256": "6260debc0149888e68eceb135af932989fa9a60175b92ced66d0017122c7753e",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/src/office-editor.tsx",
+      "sha256": "f4d23ded894fd1f96fc4f100638b722d1f33f20da4cf67642d51ed25f2c8ba60",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/src/office-tool-catalog.tsx",
+      "sha256": "dbd2ac279f316625b093393d67f6f8063441a8c3013581c535d2cf4e24a3d840",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/src/office-tools-extra.tsx",
+      "sha256": "df412f4da71437420b298db9c98da18a8da3cf5ce5eff70aacc4b1fd368ce52f",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/src/office-tools-ui.tsx",
+      "sha256": "ece51844c63fa61b6b171ae101f48945add5afeb684d2f17e7b15570843deb98",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/src/office-ui.tsx",
+      "sha256": "d24f573e3b2791cb77bb6f342fe7baa49980319b1f6851a2812dccd568194ac4",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/src/office.css",
+      "sha256": "4e233501faca150534b19b8bcb2b73ef4c83094b0de6a314c634c2c194e05020",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/src/resource-picker.tsx",
+      "sha256": "75fe2709020653f18e0ab0217c71aa6b18e9374e18dada7418b63a6669f95321",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/src/st-code.css",
+      "sha256": "f7b413f5b2d796b5f757be0ff567d6a44190c34e0fd57d5c15495f8b8f6b8f18",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/src/st-code.tsx",
+      "sha256": "aec7bdf2efdaf4862eecc522884eb624ca9a188f9d1fc5ee711e31a5602af9f5",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/src/style.css",
+      "sha256": "ff572b98b25977479ba6c28cbaae1601ddd4339cfdbf89bef8c5702e659199e6",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/src/tuning.css",
+      "sha256": "7d1060761f8740618cf41383e5de1ec24669ad4f830c049f1883af920e638033",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/src/tuning.tsx",
+      "sha256": "739da6bae3fdc7d9cba6cfd4f5d7c424d354064be881aef6e258d899821263c6",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/src/vite-env.d.ts",
+      "sha256": "65996936fbb042915f7b74a200fcdde7e410f32a669b1ab9597cfaa4b0faddb5",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/src/workspace.css",
+      "sha256": "9fc8bdea4e766d3486358d58279ed9e185dc9777a39dc4fe5cd2613e002e056b",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/src/workspace.tsx",
+      "sha256": "6b6ad78516f2aa2f5d61c60da7f7875938a8eadfb36cdca63729818d2c12fc26",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/tests/compatibility.spec.ts",
+      "sha256": "2222315a8c28e9191ed0738bb21aaf2b95855b81ac8b419b09b04ff21acda96b",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/tests/dashboard.spec.ts",
+      "sha256": "baa910bb7bb3ff967c017a79131413b8873b28e462343b6f98d47fdaa078391d",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/tests/layout.spec.ts",
+      "sha256": "aacf0bc985ce6eff7ac5b683f70e707da01517c24b21f63b16e97653c04fe4fd",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/tests/office-helpers.ts",
+      "sha256": "648d0f76c9bd08b5c4119474b2162ec13b0ba137b36a5b56f573769b1fe6c0e8",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/tests/office.spec.ts",
+      "sha256": "60aa562354c6e5b869e83546fe3ebbabe5e94ae499e94683811a816d4cfc2083",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/tests/resources.spec.ts",
+      "sha256": "578d1df87603e05a148918bf17a4430bbb4234298ac0b43cf3e3f2a01d53faf4",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/tests/st-code.spec.ts",
+      "sha256": "ca9dabc28315193bfdb6e567256d3014da9576972e380b14249601efedab0250",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/tsconfig.json",
+      "sha256": "4ff5375d85e409e84f7aed9ae4243da1838a52a86f0af335607dcdc83ddbb67f",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/dashboard/vite.config.ts",
+      "sha256": "9430be06a14fb3758339f414770f80ff0d6dcaf235ffa633497fd2d5062a3419",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/mcp_server.py",
+      "sha256": "e5d22f588b1117db3de3c9ce146f9fa98233cfbe3a1b35a156f27d053c9f2e91",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/office_mcp.py",
+      "sha256": "078efe9f121caddd52810d73d9613ca9243b5adcb1e1cc6c88909a3e579f337c",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/orchestrator/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/orchestrator/config.py",
+      "sha256": "03903ccdb770959282ed5f4d59e24160bfe6d94ff4146f9fb405e9ccedad2f1d",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/orchestrator/engine.py",
+      "sha256": "b4eb5f53009eb02c911ae248d26d94db5c8d8d1ff97ddabd7e49ae177a74984a",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/orchestrator/main.py",
+      "sha256": "44fa5c39837b2432e962ad126e1edbbfd78caca95501cfb7d3f24e9017654e44",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/orchestrator/office.py",
+      "sha256": "840f924dd7becedf98ab1d5599697559564719d341daa96cc3cc8da6d69ef162",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/orchestrator/office_api.py",
+      "sha256": "9480912d87523bebf639db4f4bbada06b76724a3cea24a580519f8c70707989c",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/orchestrator/st_code.py",
+      "sha256": "d0c2aaa2abc1ad32a5e922f6252e0b7fd2239d27e5f3dfa07833b76d1d870177",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/orchestrator/tuning.py",
+      "sha256": "cce173ce5ea976736f5393a6b42b1275cd869fa1aa4a416719d665f50c02ae24",
+      "included_in_source_git": true
+    },
+    {
+      "path": "apps/tailnet_gateway.py",
+      "sha256": "ab6cc918afeef8f10055fb3200393a849f73e51d7b9a9931fbd5b7ff7dfdde08",
+      "included_in_source_git": true
+    },
+    {
+      "path": "deploy/719agent-demo-backend.service",
+      "sha256": "84238ebaa2af7bdde55f891140187f6b98ac3c010974524c8019a9ebb25d3801",
+      "included_in_source_git": true
+    },
+    {
+      "path": "deploy/719agent-demo-loop.service",
+      "sha256": "eb0b88b7430c6905fdd385a459840770d590dd2509d5839eed4bf443781db5bf",
+      "included_in_source_git": true
+    },
+    {
+      "path": "deploy/719agent-demo-model-gateway.service",
+      "sha256": "c6780081b34381923fd6a8bb047af9aac850d66f798d766397f449479b36b405",
+      "included_in_source_git": true
+    },
+    {
+      "path": "deploy/719agent-demo-opencode.service",
+      "sha256": "c96a996adc13ddc45a418060b58687ca3e99ef8b18a1a00d6dea03fb6c3fadc7",
+      "included_in_source_git": true
+    },
+    {
+      "path": "deploy/719agent-demo-tailnet.service",
+      "sha256": "8806e5a011f4fc1146e7061398f92c877ad2119463a19a99e770ced9a84a1963",
+      "included_in_source_git": true
+    },
+    {
+      "path": "deploy/nginx.conf.example",
+      "sha256": "6db61ab0ec6eab9b5632be811ac27f2665026f4e3bdfc368e15d249f231985d1",
+      "included_in_source_git": true
+    },
+    {
+      "path": "deploy/provider.example.json",
+      "sha256": "fa3c23b4298a6d45c53beb2e945dd45faa5c33581a59d0538b2698e6e0d661bc",
+      "included_in_source_git": true
+    },
+    {
+      "path": "deploy/provider.opencode-free.example.json",
+      "sha256": "ff7001c34844803aa9bce5845a08daed7449f70450885733f0579edb38015c13",
+      "included_in_source_git": true
+    },
+    {
+      "path": "deploy/provider.vllm-gpu01.example.json",
+      "sha256": "4b54700399a91608cac6d79dc84cacb4a56777bb3a33f1f9a24ffe7567446a6e",
+      "included_in_source_git": true
+    },
+    {
+      "path": "deploy/runtime.env.example",
+      "sha256": "c2d7a08a15a481cf5615897a0eb1bb136c6a87c01e86917401f14b3aa72f1a45",
+      "included_in_source_git": true
+    },
+    {
+      "path": "deploy/verify-wsl-restart-and-cutover.ps1",
+      "sha256": "623611a8b15970acfd9d0b60039887a263887a0785b27c9f9efed589009962a2",
+      "included_in_source_git": true
+    },
+    {
+      "path": "development_constraints.md",
+      "sha256": "b5426ed22a7ea3bb617dc5a58cd10f5a2de40059cec573151d822a312878d45e",
+      "included_in_source_git": true
+    },
+    {
+      "path": "development_progress.md",
+      "sha256": "89eafd28e4e7c5133c03121a4c5c8c40ef22c6c01bc55aa8c36400dbc80ee0c8",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/AgentRequest.schema.json",
+      "sha256": "03b66eed9b97c3cad7db3697b236906c3f4aecf859038fb11e8ac4ee92eb979f",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/AuthInfo.schema.json",
+      "sha256": "c8075a0dde3f3a9736e1996ef060f429ee019d40c1e0437c80dab2a12e9948ab",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/AvailableModels.schema.json",
+      "sha256": "c097a0423aa32fbd0dc0b9b77db114182db0220c9efed5cf0374008006bf81a2",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/CatalogResponse.schema.json",
+      "sha256": "8c43232884889387dde8e5446e6c7add91ca4b2ca4e64d44d63032a15431b8ff",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/ChatMessages.schema.json",
+      "sha256": "72ee47a2bff7aec3be8952fb1030dc423c2892ee3cf505e1de33dc1cdceb9b72",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/ChatRequest.schema.json",
+      "sha256": "7a3b4a2389b5d431eff228417dd0b7490cb8071d76dafd29075f2798f6cd6779",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/ChatSession.schema.json",
+      "sha256": "f633c36e4edfd88c8a986e88a4270f764504748915fb3b5479e70c713b2f35a4",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/ChatSessionRename.schema.json",
+      "sha256": "67ab239f2fb386a2fce898dae149e283218325031fc0eae3d3739b1dcc0c7b17",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/ChatSessions.schema.json",
+      "sha256": "95862e71fdc8ef94acd61d222789713acc9d45202101b53ce1eb32aa09e64282",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/ChatTurn.schema.json",
+      "sha256": "79fca408e30cf26367df636bb0c058bf54a3e54d3b16d7da6d9f361f92bd32b9",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/ControlOutput.schema.json",
+      "sha256": "4578269ce51389b8e0ade0fb03bb64c5a988051d59b3065231d2ea022b643432",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/ControlRequest.schema.json",
+      "sha256": "9527c6041c92e28b03abbbd65348186d68454829f0530000a445c6eec84ce777",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/ConversationList.schema.json",
+      "sha256": "d8afc7a3d1b69259facc3a5ebd81385270217bb9f8267e616a5238587ce82c1e",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/CsrfResponse.schema.json",
+      "sha256": "5cde3bda35c018235d4fc3506c8d3b4291e3245263ee6ece8e8316217594fcbf",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/EmptyRequest.schema.json",
+      "sha256": "7ff86b9240fe68c60fc9b8f673c493f6c9d751e8e1ee600f28b0afcc03ac6f10",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/ErrorResponse.schema.json",
+      "sha256": "3c0d3015a6a8c23da328c21b30a510a585b4129b8c40c5dc227ad8d08dfe89f2",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/EvaluationContext.schema.json",
+      "sha256": "ef89a606cee793af8b2d9761e64160f5cd362cfabc53646c035341ad92250450",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/EvaluationDecision.schema.json",
+      "sha256": "af63548a7fbf8f2f1fe99a9c9e47a6b70d37ac7e8fe70f77ba4b10d1ac7b7afc",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/EventsResponse.schema.json",
+      "sha256": "a6cc62034b5db5356027404aa5b40bcdc95f9d97efdea23bf3ebfb6411fa982c",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/HealthResponse.schema.json",
+      "sha256": "cb7b747851fc4e677061135d2c60dec3bf599a3ba107e253ab0ad49b608f33e3",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/IterationsResponse.schema.json",
+      "sha256": "aa158624ba878ec7af581f4c937866ae74bb5db8614734e663c72bbec67e8183",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/LiveTelemetryStatus.schema.json",
+      "sha256": "099ca30561eac19b7b6cf17841271e60c35a9f2075901f81626fccd7b3cb85dc",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/LoopStatusResponse.schema.json",
+      "sha256": "c0f58562b171a3ccb5096cd3250259e9f8ce86b2cff2cc07149bc5b617eb601b",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/MonitorOutput.schema.json",
+      "sha256": "fb0fa3f8b1d7ac477be3e3c2fb05bd6115738f57c56efd2533d971d150760ec1",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/MonitorRequest.schema.json",
+      "sha256": "30213663d2d623fc8a9f7c59f2ebbed063358d50742e91859f5890940457233d",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/ObservationSnapshot.schema.json",
+      "sha256": "a8a8895d8352f8791c4ec920cd6636ed3872358db1fe1b8346b870fb02f60f50",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/OfficeMessages.schema.json",
+      "sha256": "26a30751a5393ebb923119ef3759c83b61bb64394fbe16c8a5929ace55b9c4a2",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/ResourceList.schema.json",
+      "sha256": "b9cc0e60b0fddf64998087e3ca98e8de1da85950a8d1f2770e3f672cc16d92d9",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/ReviewRequest.schema.json",
+      "sha256": "5ef76b52390e3322533b3b69017239019db7d61650869f1cff3c9ef3a43f20d2",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/RunDetail.schema.json",
+      "sha256": "d85e59fdbe638059da9ee96b373dbfb19cb424bd1f4831430e01780b907eb6a8",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/RunList.schema.json",
+      "sha256": "d7a4c67ac5579f8cd477b28839567a5bf6e2ba65618e1e6becd15e1859fd38a5",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/STRun.schema.json",
+      "sha256": "d54b38507603c00dbc8bcac02eb0850cf8c75353e8981166205e81aa95ea1578",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/STRunSummary.schema.json",
+      "sha256": "45316dccd66284b210348ce96323ef48516fe0ff0a686d50aaf101fc2043699a",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/STRuns.schema.json",
+      "sha256": "2c23bddf0f869e3937bfe3867b0f181bbe34504d445e2e2ba4524c25e5fee576",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/STStart.schema.json",
+      "sha256": "7a1207281a7b1f6e9c6d801a40b029fb478137db67c6305178424820c8fe4763",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/Scenarios.schema.json",
+      "sha256": "c9b729e8d77bd04c8f5f636be4df78794ae7ca8c6d3eab39d05e12a3e1734ce6",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/SchedulerConfig.schema.json",
+      "sha256": "552bf4406d878687981e6d8d41e0d031fe1caa1a69ac3b6da1416d53aa1c04e3",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/SeriesResponse.schema.json",
+      "sha256": "5187914f6efd3acead60f172faa79f5278fe8ac46f31e5014c59b41d11260c29",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/SkillNamePreview.schema.json",
+      "sha256": "405d7592285733f02510361ccb4c4dd6e4aa6153c08a19219199fb3dd1ee953a",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/SkillRegistration.schema.json",
+      "sha256": "332d40b23eea4e6fa99ba7f2e9d522b1eca86598ed5ac86920fc0f54345509f8",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/SnapshotQuery.schema.json",
+      "sha256": "79f7ebc9e062fa4d9b869237541ab4190cdaaeb001d8cf8506eee9bd8b06a529",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/ToolList.schema.json",
+      "sha256": "60e1e4bdc0d3cbe57b6d74913498b68f4d47eb33a8a33529a426db8c7faa3599",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/TrialRecord.schema.json",
+      "sha256": "389ad94be76ba6c42a14352f908add6aab126c5af50a9e109405bb5d23f5e595",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/TrialRequest.schema.json",
+      "sha256": "bfa5839f5a1d69ec63e06f6b8b84560cc7966caa7a63fe3c64c7abb08fd3b07c",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/TriggerRequest.schema.json",
+      "sha256": "1736b4460065761451672cb48f35c750c0f9fe31e3c9f9837ba42f6952327131",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/TriggerResponse.schema.json",
+      "sha256": "c631b31f838fa14ae441490f46fc2d5a4dcbe97854cbe005bd66b2159d7b51f4",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/TuningRun.schema.json",
+      "sha256": "8a8106f50f023cba1b0b19952975d5b0a49d7fd253bfa660d57d5869be5ed8ec",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/TuningRuns.schema.json",
+      "sha256": "46c34a0bb14d5f72da8e36cb09a9ddc851e7c9b8bbf087112cdfc73fe26bb55f",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/TuningStart.schema.json",
+      "sha256": "b0901c40939cb909db3f825a267da3a378b8fba02db179fe95b3f4c74505e2f1",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/TuningTrace.schema.json",
+      "sha256": "908325ef3e7ccfb414e9945bcbfa34c28ba51bdb8c6381f27ed5eda7d3c2ef1c",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/openapi.json",
+      "sha256": "e0ea0783dfff30dd35cc0907aa360e2984974f95ffa7c768291a05aa59bbf513",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/api/opencode-1.18.31.openapi.json",
+      "sha256": "a8a59aa7a385c907d51d995a12bbd962bd5b01aba7537977884d459426ddf344",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/control-system-integrations.md",
+      "sha256": "889ec23d3ea8980e7da10cc536802178edf236fcef85b52f1b2a8e5c0d934822",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/runbooks/agent-mcp-probe.json",
+      "sha256": "b79c2e0fc822801d996ba8e84cb05a4357f884b4f8c3c232e28f4b3f581994b3",
+      "included_in_source_git": false
+    },
+    {
+      "path": "docs/runbooks/chat-desktop.png",
+      "sha256": "924ad759857fce4b4f4508d2283a6f13e146e28dbd7781343d7fe2c9914e50cd",
+      "included_in_source_git": false
+    },
+    {
+      "path": "docs/runbooks/chat-mobile.png",
+      "sha256": "f61dda59658d733e5b961e2bc100fb0000c3de451188b4d6f60dd4cc1050b8ae",
+      "included_in_source_git": false
+    },
+    {
+      "path": "docs/runbooks/d0-probe.json",
+      "sha256": "74d7148da0f9e44356cab0e8ffe3edae456c023122128bc5ad2a511406e3c9a7",
+      "included_in_source_git": false
+    },
+    {
+      "path": "docs/runbooks/dashboard-degraded.png",
+      "sha256": "51cac77265cb595c8069ecf05c1691c6b13af2ad86f456d36fa607c3a5edcd77",
+      "included_in_source_git": false
+    },
+    {
+      "path": "docs/runbooks/dashboard-fake.png",
+      "sha256": "e38fb729aead193c08655a145bc2dac5df15ea4fa71981e4b0c2576398ab3622",
+      "included_in_source_git": false
+    },
+    {
+      "path": "docs/runbooks/dashboard-real.png",
+      "sha256": "28469f60a12eac2b5e913d291e19fc80852418fca4728bd16530e1e267389be8",
+      "included_in_source_git": false
+    },
+    {
+      "path": "docs/runbooks/doctor-local.json",
+      "sha256": "7792e4f8cd7c1f5f6cf5197f2e7ac8f54a90e3691aed9725fb59df949fa0d0bb",
+      "included_in_source_git": false
+    },
+    {
+      "path": "docs/runbooks/frontend-audit.json",
+      "sha256": "f3ae8189ce88389d14c6d15adff3ea7cc9f061f6adbca5751e0ea3d9dd1d469f",
+      "included_in_source_git": false
+    },
+    {
+      "path": "docs/runbooks/layout-browser-verification.json",
+      "sha256": "c4c39eb7e37d41d51f8b67faa7c4a067b3920c9821f67f400cdad1a717519edb",
+      "included_in_source_git": false
+    },
+    {
+      "path": "docs/runbooks/layout-deployment.json",
+      "sha256": "5248698999f51985e0b852472913bec4e9212787c57490f312ac93ea0e04294d",
+      "included_in_source_git": false
+    },
+    {
+      "path": "docs/runbooks/layout-refactor.md",
+      "sha256": "8c6ae5b8d1af347721da64f31f524bc881a0326d6eab5517c0dd7f8d96755e43",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/runbooks/layout-tailnet-verification.json",
+      "sha256": "f80fb47eb5b5c21fe687a90f61e0772896a838dd2d66eeeaff3801338a4f5074",
+      "included_in_source_git": false
+    },
+    {
+      "path": "docs/runbooks/local-deployment.json",
+      "sha256": "b7be696feb3510f3a201324120f5ba6341814ec06318d42622cc7ed3412a1b8e",
+      "included_in_source_git": false
+    },
+    {
+      "path": "docs/runbooks/logo-deployment.json",
+      "sha256": "5cb7f0a7984ab327824eef6dff98caeac0418c0bee8d8c0ed6b6f33659f7773e",
+      "included_in_source_git": false
+    },
+    {
+      "path": "docs/runbooks/office-center.png",
+      "sha256": "d4f665cc5369e402f4f3aade9563d5ab64857271725d8119605711f6300b8cbb",
+      "included_in_source_git": false
+    },
+    {
+      "path": "docs/runbooks/office-conversation.png",
+      "sha256": "ed31450215a91fdc6f9d9f7e9458de3518654a252205b38ecc6ed09bd407842a",
+      "included_in_source_git": false
+    },
+    {
+      "path": "docs/runbooks/office-mobile.png",
+      "sha256": "9a28a9dec2325b5826a51478ca96b36b6275aea6761aa24c2c81268fc0e10721",
+      "included_in_source_git": false
+    },
+    {
+      "path": "docs/runbooks/office-tools.png",
+      "sha256": "a148063704c13c97f5fdb5526371820b42ef18b4630e62d949c7eb6f16386b5a",
+      "included_in_source_git": false
+    },
+    {
+      "path": "docs/runbooks/opencode-compatibility.md",
+      "sha256": "8ee20504a6ec8fe6f7d3b2d648e0f5185cc325008ce4df1fd804a7a029f52566",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/runbooks/real-integration.json",
+      "sha256": "22bed139a21f107625298434d814b4e63773625886d4fa4f30e46e7c6b6dac79",
+      "included_in_source_git": false
+    },
+    {
+      "path": "docs/runbooks/simulation-b-acceptance.md",
+      "sha256": "fbb7c987c1204f1a6baaff4d394d606d887ec433120873df3c834f20ed2aa008",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/runbooks/test-matrix.md",
+      "sha256": "06e3bc47e160321f9bc10b699e0aa3969a0426e799a31c72c7e48de0b341219a",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/runbooks/validation-summary.json",
+      "sha256": "9e05a9039337957bc08523f83c8dc952ba615bcb792c378934294b49001e2183",
+      "included_in_source_git": false
+    },
+    {
+      "path": "docs/runbooks/wsl-browser.log",
+      "sha256": "3c811b0d7f970061009f3e8ba018fbd4f294a2745cfd9aad6561fc1277bbd72c",
+      "included_in_source_git": false
+    },
+    {
+      "path": "docs/runbooks/wsl-check.log",
+      "sha256": "197eb8fe78831f73cc87c011091a279a3891fff9f3e8356455e69f7b558aa29f",
+      "included_in_source_git": false
+    },
+    {
+      "path": "docs/runbooks/wsl-cutover-complete.json",
+      "sha256": "5b438a4ffc1397006e37ee942b766cbdf860a90ee835ed302c20063a488afbd2",
+      "included_in_source_git": false
+    },
+    {
+      "path": "docs/runbooks/wsl-deployment.md",
+      "sha256": "4f24b6fa16de48db5b28df92faa449ac1530ee33e35f15b19d48734e9592ef0f",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/runbooks/wsl-doctor.json",
+      "sha256": "5bf9b5ffb29bacc29b37576cfca7195a4abae3b982d44d9cbcba8566c44df65b",
+      "included_in_source_git": false
+    },
+    {
+      "path": "docs/runbooks/wsl-final-state.json",
+      "sha256": "9d1421d15225c31472bd0116731785d7d3eae7a8bfd371007c19477cc57b2011",
+      "included_in_source_git": false
+    },
+    {
+      "path": "docs/runbooks/wsl-migration-coordination.md",
+      "sha256": "f54c9ac49616e720e3e71e345fa6ded119bf1c62c259aac9248e23fab19b4bfc",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/runbooks/wsl-migration-status.md",
+      "sha256": "ae7d0b69893d88ffc3a202ddd4e4053cc4ed74ff48d6b6575912e78e27434148",
+      "included_in_source_git": true
+    },
+    {
+      "path": "docs/runbooks/wsl-model-stream.json",
+      "sha256": "a0e07519c38e21ac2aebf4677dc17ec1732cc913bd2b7b901bd8ac902c4ff15c",
+      "included_in_source_git": false
+    },
+    {
+      "path": "docs/runbooks/wsl-real-smoke.log",
+      "sha256": "64ace798c6f3e5af069247f3a8c47c654910c831f060caaeee079332d4ea1941",
+      "included_in_source_git": false
+    },
+    {
+      "path": "docs/runbooks/wsl-restart-verification.json",
+      "sha256": "19bce97032276723316cae5f5f811738e449e18d21cf3cd84d0416abaf00b449",
+      "included_in_source_git": false
+    },
+    {
+      "path": "docs/runbooks/wsl-source-manifest.json",
+      "sha256": "ff01e10645091e83fef27c8f499050c62e4fc96decae61d3937210abedea8cbf",
+      "included_in_source_git": false
+    },
+    {
+      "path": "docs/runbooks/wsl-tailnet-boundaries.json",
+      "sha256": "85b6d11db48e5715467b8213be72e01401a783c6a6c34b3f5c3ec264e1bd3c55",
+      "included_in_source_git": false
+    },
+    {
+      "path": "docs/runbooks/wsl-tailnet-browser.json",
+      "sha256": "d735f547e0ec43e738a66cd80c993bcc722a8e4c7e218b7f5ff5a53e9d737751",
+      "included_in_source_git": false
+    },
+    {
+      "path": "docs/热工控制系统智能化工作阶段性汇报.docx",
+      "sha256": "dd9857567059f8fca503d1be8d1fe47f1a67e357418d26d26ce93156ad566663",
+      "included_in_source_git": false
+    },
+    {
+      "path": "examples/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "included_in_source_git": true
+    },
+    {
+      "path": "examples/live_process.py",
+      "sha256": "39eaa4217c9e7da710a845b5d1199a13d5c828b13607a834c70482d9e0e3c1bd",
+      "included_in_source_git": true
+    },
+    {
+      "path": "examples/program.py",
+      "sha256": "e82e9c2ceeffb8026cc095b1fbd3558ed72b1d008dc777e8a4c1581b7b9a3702",
+      "included_in_source_git": true
+    },
+    {
+      "path": "examples/st_code/FB_Ratio.st",
+      "sha256": "7a5b10f017045c105f2b650f59e4feec69b244e59fc672af08d1e26f1c067abc",
+      "included_in_source_git": true
+    },
+    {
+      "path": "examples/st_code/SafeRatio.st",
+      "sha256": "5f4f9abaeba6ecb714f21af25745362a350c5c5a882ac57750e9930790858eea",
+      "included_in_source_git": true
+    },
+    {
+      "path": "migrations/env.py",
+      "sha256": "d90c0f15653ba59287a3312d4da67798918afd722246e6f31f3641f5acc6dc0c",
+      "included_in_source_git": true
+    },
+    {
+      "path": "migrations/versions/0001_initial.py",
+      "sha256": "9dff69831666f79ed3e5cdeeac2270c28bd788def9e5496e76f8ee3a44e92198",
+      "included_in_source_git": true
+    },
+    {
+      "path": "migrations/versions/0002_job_uniqueness.py",
+      "sha256": "8d0b5ca4864722a0349ee1ab8181203233f8de77d20154412b422be463cfb161",
+      "included_in_source_git": true
+    },
+    {
+      "path": "migrations/versions/0003_chat.py",
+      "sha256": "a13b94ad54dbde0cf265eabebc16c719e1bc277f2052d62269eef87a84a486cf",
+      "included_in_source_git": true
+    },
+    {
+      "path": "migrations/versions/0004_chat_request_hash.py",
+      "sha256": "57d39977004d25bf6afef0d66f168b1ed3a2f51396c5b4072b00051577133ee0",
+      "included_in_source_git": true
+    },
+    {
+      "path": "migrations/versions/0005_tuning.py",
+      "sha256": "8ec550d2cfffc5d0ed028374deb98b7e8430b0efe658404f1c4d97fa0bb63223",
+      "included_in_source_git": true
+    },
+    {
+      "path": "migrations/versions/0006_office_platform.py",
+      "sha256": "95a30d6e0e193a71e0e5471d200e586e8e694d8665bbd857bcc61607a120887f",
+      "included_in_source_git": true
+    },
+    {
+      "path": "migrations/versions/0007_st_code.py",
+      "sha256": "4a5d61cbec5fdde071b97e727f56b0d913fd9937d39777830fe6e5f14d3dc932",
+      "included_in_source_git": true
+    },
+    {
+      "path": "opencode.json",
+      "sha256": "1e6f28604173b58211a311f0811208d9de603d37df96adf3bc73a9cf92014ff8",
+      "included_in_source_git": true
+    },
+    {
+      "path": "opencode_multi_agent_control_architecture.md",
+      "sha256": "d1659e297875828717c9b3a20a746fa8fb0aec3711aaf593ca4505312af1ec4e",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/adapters/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/adapters/catalog.py",
+      "sha256": "75e6509026de1efe17e1505da03734cd8df38bcc44162b7f81a4859abca7bbb7",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/adapters/control_workflow.py",
+      "sha256": "5f2125ae3fb8b490ba15ed4d8994e6b139e1cc7b5004a98f70d0e3ff121a0268",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/adapters/example.py",
+      "sha256": "53b130604819cb656af2e36699f8b6de7df9147b72e8aa73aaf16d3f24c083aa",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/adapters/integration.py",
+      "sha256": "c88b60f24a64069fefc3cfcea7863bac12bce6ae8f85b3c4db507268ccfabf66",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/adapters/interfaces.py",
+      "sha256": "86852b735090f411b3b248751f8ec821ba26f8ad0cb20969aa86b29914bd2195",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/adapters/live_telemetry.py",
+      "sha256": "c364bca19618aab87d4050acf0446f99c731f227792a65a43daeeb86004087ef",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/adapters/office_extra_worker.py",
+      "sha256": "012d34e4b2db08008950f27808ab0595d7b3d77f7f2790b25d8af1dfe7656eca",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/adapters/office_files.py",
+      "sha256": "d33fbbdf987fecc095be35a3d6025326a1658de151f1dfd1f7b716e6818a209e",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/adapters/office_resources.py",
+      "sha256": "a8c587451ac3e75fe1e3559b916693e147796ebe450a0835d794318e51652837",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/adapters/office_tools.py",
+      "sha256": "7b2b81533980096f90dce0dd2babfd07c3f3da4d9a0d966f3f95aca602634424",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/adapters/office_worker.py",
+      "sha256": "ee37fa6a78306c6bda03846fbdeefb93fb8e8d25a32a071eee2168de69694fd3",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/adapters/offline_simulator.py",
+      "sha256": "c029d14b0c6fad15934845cd2ce45ea8b3ae50b77ba47aeec8c6cf8303cbd005",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/adapters/opencode.py",
+      "sha256": "96604ac4149f3fa6ad651478570d759bd2a73ad8c4a81257fa38d79f77b6b3d0",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/adapters/platform_store.py",
+      "sha256": "2571e107dbd16f6fe3fe990b054b30ad75b6e2d834d46e125e3c9f255dfd72f1",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/adapters/st_code.py",
+      "sha256": "47fdf3b3fbdf29e536f1509489d1cecb2d7d35176f337977f43e88a8d0417445",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/adapters/st_model.py",
+      "sha256": "398ee872351bab30afda825963b657655c05f017bfbfa88a859bf9447882f25b",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/adapters/st_scan_eval.py",
+      "sha256": "160c56a70a9f0b9863bb2544bf9e98f26f6019422acc4da56560824c190d2caa",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/adapters/st_scenarios.py",
+      "sha256": "2bad4d207845fff4074377db2c59c6cfc19b31c76a9c4e8c9847e9d6d9136414",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/adapters/st_workflow.py",
+      "sha256": "c72571e92e066366642c2d0bf2b946fed85a700211b760816feab750127850d5",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/adapters/storage.py",
+      "sha256": "9d71b218f27e2eb35596c07d0884d5605848befdfbfbddbee9bf893497a1b3cf",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/adapters/telemetry.py",
+      "sha256": "7e2e031e36ab58bc6df3a96e1d613315cab4387684a2cdd73efc85bb63910b52",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/contracts/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/contracts/agents.py",
+      "sha256": "2d49d0503a09377235ebb202bdf2467aa0d058f2220ba9c75ce370b2444fdbd7",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/contracts/api.py",
+      "sha256": "7e47c5ca36e9b5876d6611ab4f3d6d742c0a67b69a3641f1e29b8f2b109a3e26",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/contracts/common.py",
+      "sha256": "7c2f1f80f57577d1afc0a5190401d3043b0559797b7c953f25c6da402006c743",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/contracts/internal.py",
+      "sha256": "134f9ac9c12334612dea7757353c0a0e7965ed5f50b85aefd96b7011f21759b0",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/contracts/observations.py",
+      "sha256": "862f0df10558a0a92ae30d0f8397e97cfa9c5d1d8519630cc1bc6d263ddd717c",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/contracts/office.py",
+      "sha256": "521c5927bc68dbd09aaefad1d6639ae8e40a51f07570bc0723f567a9020c267e",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/contracts/st_code.py",
+      "sha256": "5d4bf97f38e1bd07d721d3a748e8a5b8a1f08c7f8ec473f60a6354ced15cb375",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/contracts/trials.py",
+      "sha256": "3d702b8e53077fa99a915a57f97f015c76c4ed887d59051adccf5fcc5d515d54",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/contracts/tuning.py",
+      "sha256": "b63336fc1c3632acda6b2a918bd34b25aab386f6440c0d68f883a8ec62349fe1",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/domain/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/domain/authorization.py",
+      "sha256": "24acd13fb1427a75b5e5fadcb8a4084dc42815fb08e79e62faeec00ee7a9cd0a",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/domain/core.py",
+      "sha256": "894ef0450cc245cab09d6eff18933c3fcb023fd0f611cfbd1522b78522ec8a59",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/domain/states.py",
+      "sha256": "9647202d7271d44c44ea2af10b8477d32232faa38aef37f3216d92c962ef57e5",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/simulation/evaluate.py",
+      "sha256": "9006dca28f74dbd587b84184c063a93bf7ee4dbb42aea0bd22d38e7837324ad6",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/simulation/plant.py",
+      "sha256": "b6018a89925f6930a6cdf8296bde70b956afc1927ee6120a49956a1a854fc800",
+      "included_in_source_git": true
+    },
+    {
+      "path": "packages/simulation/search.py",
+      "sha256": "d3b54685fcd66f601e5c4acec1f30d9a87c298f01f078fc35dd7bf6eedacd363",
+      "included_in_source_git": true
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "f09d9d6d92495ddde3e2ed01d4beeb76b3a9371bdb44fa996506c0ccd8b33aa5",
+      "included_in_source_git": true
+    },
+    {
+      "path": "requirements.lock",
+      "sha256": "c68d8ea59eef923410a493e75aefff78c151758b612f8e1bc14a42152354293f",
+      "included_in_source_git": true
+    },
+    {
+      "path": "scripts/acceptance_login.py",
+      "sha256": "38ef51c36e96da210121fbca2506791dc501e33db69866933ce5f3df8eacfdd0",
+      "included_in_source_git": true
+    },
+    {
+      "path": "scripts/backup.py",
+      "sha256": "a03e4a852e659ee29f00dcacf2088160f3ff96d4c24d03b404943e304d03cc35",
+      "included_in_source_git": true
+    },
+    {
+      "path": "scripts/check.sh",
+      "sha256": "2a0e1454404642c0c805ab6d0a51c047948bb55a3f466323e86f754731ade18d",
+      "included_in_source_git": true
+    },
+    {
+      "path": "scripts/doctor.py",
+      "sha256": "12eb715ddd070cc37ace620a257b4dae228078e49d92ab0f43dcb9bb14cf45ff",
+      "included_in_source_git": true
+    },
+    {
+      "path": "scripts/export_contracts.py",
+      "sha256": "aafa051e5edcbca26e841a254f6aa72e99750304084f3ca5b2bcfbf416352274",
+      "included_in_source_git": true
+    },
+    {
+      "path": "scripts/generate_fixtures.py",
+      "sha256": "b99b81681701786f8d06c4e17f7b5ae0857fa8e002e5e296c5d487ac83514413",
+      "included_in_source_git": true
+    },
+    {
+      "path": "scripts/init_admin.py",
+      "sha256": "077477344b3ba9114e99fdb38af6475f98ce84c77f5aa8949537132c61ec2f07",
+      "included_in_source_git": true
+    },
+    {
+      "path": "scripts/init_runtime.py",
+      "sha256": "49883d99372f5376d5c8f14dc9b5f02972bc867b43e68a19a9420d50282ab247",
+      "included_in_source_git": true
+    },
+    {
+      "path": "scripts/launch_opencode.py",
+      "sha256": "9ce13b1dd19efc2246440ea65c0dae6b67f3f07cead3094fd4c227b159f961b6",
+      "included_in_source_git": true
+    },
+    {
+      "path": "scripts/launch_vllm_gpu01.sh",
+      "sha256": "6e76cf5f8274a70f53c47200598b9a73917ec1ea2130e7aae4d412e185d2854d",
+      "included_in_source_git": true
+    },
+    {
+      "path": "scripts/model_gateway.py",
+      "sha256": "262b7ec6274dde20294b8b19bf23bf9e470f6bc7584f2e78a048b76a5e40cdfa",
+      "included_in_source_git": true
+    },
+    {
+      "path": "scripts/probe_agents_mcp.py",
+      "sha256": "9232aa428c0780ab94bc1f71238f05ac5979246f085f78a55ddcd7d73a675a13",
+      "included_in_source_git": true
+    },
+    {
+      "path": "scripts/probe_opencode.py",
+      "sha256": "1d985ccbfe57306ad274c6ed3da4ecf1ebd67adb58d9dad511212b46f03100d4",
+      "included_in_source_git": true
+    },
+    {
+      "path": "scripts/probe_vllm.py",
+      "sha256": "2326471f2d492639fe0e4f6d8d933a105482174b101b0980597e8ab41925e6eb",
+      "included_in_source_git": true
+    },
+    {
+      "path": "scripts/smoke_office.py",
+      "sha256": "75bc6f7b0355fe470b5d40157811093ab6f858d9df46e34befd9318e712d195a",
+      "included_in_source_git": true
+    },
+    {
+      "path": "scripts/smoke_real.py",
+      "sha256": "2e5b6dfd0eeaaaabdc70c0610ed574376e13f79b7f948bfa11a0831e41542cd4",
+      "included_in_source_git": true
+    },
+    {
+      "path": "scripts/smoke_st.py",
+      "sha256": "d543e954bb9efe289283393233ffe0cae2314889237ad7d492c831a3fc7c2b93",
+      "included_in_source_git": true
+    },
+    {
+      "path": "scripts/verify_local_deployment.py",
+      "sha256": "00c71d9af5d5ea9aa013eba58ce83463aef4b70ca53ee756d81db45473f67a51",
+      "included_in_source_git": true
+    },
+    {
+      "path": "scripts/verify_wsl_restart.py",
+      "sha256": "bd78ea1e4a93b1b84f13864c934bf4125f73b9f94ec134668192d7ddca1351c3",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/auth_helpers.py",
+      "sha256": "2bcffcce015b00f0bb13f98f986d3a634c26bcfa7deebbb11eb804769c8c743e",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/browser_server.py",
+      "sha256": "bbb3339411caf2009f443729c032dc8a3a07478b57cde47b41888deefa558ff8",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/fakes.py",
+      "sha256": "06f6261b0a5b2be16dfea7a83d925d6e3a94b958678a9fbdccbacf4df89dead1",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/fixtures/contracts/agent.json",
+      "sha256": "8d38cd242c80c73c5c967964f66d6e9c370472e69737c677f8afac307861680b",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/fixtures/contracts/invalid-agent.json",
+      "sha256": "6b2fe700bbbc9dd964add1ea9a4575a9aedbd544c8a914824c2ba883625077d5",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/fixtures/contracts/invalid-run.json",
+      "sha256": "11ae6f5f26a6fe933aaffb060eaf6a11fae0ccec54dea843376d9ef1a1586110",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/fixtures/contracts/invalid-snapshot.json",
+      "sha256": "dd9ba8063d4f09750f8111b9a03f3e7af8fff75d17d3702f913d770a387078ef",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/fixtures/contracts/invalid-trial.json",
+      "sha256": "7cda8b991ab0644b572ed985dd32cff65c735879567446186d3b18668e47f15e",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/fixtures/contracts/run.json",
+      "sha256": "a12ac4d5ed5ef8e26326b674dd13487133358b6c0d4241bc20aa99e75818b551",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/fixtures/contracts/snapshot.json",
+      "sha256": "fec97b14f2d973f8f53be103ca06ee9d7804b3549ad5e275244dd01908f4d598",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/fixtures/contracts/trial.json",
+      "sha256": "283997de3a9667faee02da318d02a94073e0e61eba0c274cba950077a1484e18",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/fixtures/scenarios/examples-v1.json",
+      "sha256": "5fb6fb54f270db0a8f045ff34c149c645e2a3cac4397b6e6fae536fb740a3667",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/fixtures/scenarios/examples-v2.json",
+      "sha256": "2aceeca3f6b3bd2a8ef4ee2b6bec3af4c2ae191ccc8e92549ab29e1c8962decf",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/fixtures/st/batch_mixer.st",
+      "sha256": "2968ce46b36167ca1c976a3d55dd5051eb835435d4edf41d4afbfe20d052d95e",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/st_fixtures.py",
+      "sha256": "38b90bd3fa15bd57ed2f8fcdfbeed9e07d4ba7e486369cab1be647d783ac7393",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/test_adapter_contract.py",
+      "sha256": "5dbae89f50c789009369cce6187b740349ed4d2233ad7378ef11c19dab188587",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/test_api.py",
+      "sha256": "58c66b61fc2edb4b8bd2e4b649abb57004f6200222284bcb0f7e3ab2852d790d",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/test_boundaries.py",
+      "sha256": "b8e307a156f2c986b431446994a3b10dddfe2b12a24ee59391cc0ca0b9235eb5",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/test_catalog.py",
+      "sha256": "7457176fcc8b746940decab6d72964ed4603000006abf1c292c08151c46b0760",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/test_control_workflow.py",
+      "sha256": "723c57088a4fdc7015567ca68c6b1857bff8b0709b2412966bbddee37d64e288",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/test_domain.py",
+      "sha256": "9637aa9d05248fb4f38fe29fec08aae4ba12bf6114d888a114cb5b544cb8197b",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/test_integration.py",
+      "sha256": "1173518421b2fc3645a74d086a6069f66cbb6bc11e10b12f6f05c3200ab59697",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/test_lan_access.py",
+      "sha256": "1d090fc4970b87a37b79e49d8cd47f95011cd9c8d24a37adcac184c1a9b474bb",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/test_model_gateway.py",
+      "sha256": "cb137f2413b221ba52b635b37f3e13723610bc74758d917505672feb2cc05749",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/test_office_extra_tools.py",
+      "sha256": "e7b8fe7f7b4a409eac56b2e68645b16137f5161b9646a6af521ff51a83cb5204",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/test_office_mcp.py",
+      "sha256": "41eb2c70d8b69df45f3d307a05d3e88cba2ce207330d28684d9398bd659cabb3",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/test_office_platform.py",
+      "sha256": "6e458068a3fe667e9adfa7a527aa4e3cb0e4c1e4d7fe9be838a4600b609830c6",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/test_office_resource_lifecycle.py",
+      "sha256": "bfc31974010d6b3f8f132a2735e0bcd864ba687070da1ec50296d10bc3c1b1bf",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/test_operations.py",
+      "sha256": "6a0375ebd2460c9e449eaa3c9496eac65b9981f413debd2b2f47f111e0b4ce43",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/test_platform_migration.py",
+      "sha256": "06dd4edcda736b45826dece52a5309d2419643398480260fbca6a67f34002e7f",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/test_runtime_paths.py",
+      "sha256": "5b8c4c9d8e5e054820fa7cebe42f27f2633087400b68394f8d87856f092597e5",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/test_simulation_aging.py",
+      "sha256": "0a02786ea888d4f966fac064e30cdb68650cbfadddc4286fdb5086e2d8aaec0a",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/test_st_code.py",
+      "sha256": "91dcafd367c5c230ec9558c6e8efdb622a14b932e4fb8be0245c78e175156d6c",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/test_st_scan_eval.py",
+      "sha256": "d190c19b8063a66d8504688fb1be19c3b4473352168ada7f3eb39aae6078960a",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/test_st_scenarios.py",
+      "sha256": "9897777ba8fcceba37bbf9f9ca6e9608c3ed13e3c90e81b60baee04ca611949b",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/test_telemetry_wsl.py",
+      "sha256": "ea6530fdf2a73220337d7e39398de45f434ce571f63796390900e808d390995e",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/test_tuning.py",
+      "sha256": "6a04d5b2766115df4dff032adb3cf06316ecba46d2c8ca71eb4dbd777d4a545d",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/test_tuning_context.py",
+      "sha256": "77e950b2bc8d28f4954ee6d7d6ec5e7648a53cd311743e90e635b67609e33fc5",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/test_tuning_search.py",
+      "sha256": "65f7641801c38fafd9200c8cd195740474a9b59ee39cc00a68135f464bbada75",
+      "included_in_source_git": true
+    },
+    {
+      "path": "tests/test_workflow.py",
+      "sha256": "16998a50e7ce8b38ea038d5076fddc15207efb51e015580b72817f839e0456b8",
+      "included_in_source_git": true
+    }
+  ]
+}

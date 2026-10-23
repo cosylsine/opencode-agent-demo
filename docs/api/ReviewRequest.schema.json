@@ -1,0 +1,30 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "action": {
+      "enum": [
+        "ACKNOWLEDGE",
+        "REQUEST_RECHECK"
+      ],
+      "title": "Action",
+      "type": "string"
+    },
+    "comment": {
+      "maxLength": 2000,
+      "title": "Comment",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "action",
+    "comment"
+  ],
+  "title": "ReviewRequest",
+  "type": "object"
+}

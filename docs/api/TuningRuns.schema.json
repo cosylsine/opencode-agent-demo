@@ -1,0 +1,538 @@
+{
+  "$defs": {
+    "ComponentAging": {
+      "additionalProperties": false,
+      "description": "Dimensionless wear severity: 0 is nominal, 1 is maximum modeled wear.",
+      "properties": {
+        "feedwater_pump": {
+          "default": 0.0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Feedwater Pump",
+          "type": "number"
+        },
+        "feedwater_valve": {
+          "default": 0.0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Feedwater Valve",
+          "type": "number"
+        },
+        "boiler": {
+          "default": 0.0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Boiler",
+          "type": "number"
+        },
+        "turbine": {
+          "default": 0.0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Turbine",
+          "type": "number"
+        },
+        "condenser": {
+          "default": 0.0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Condenser",
+          "type": "number"
+        }
+      },
+      "title": "ComponentAging",
+      "type": "object"
+    },
+    "ControlOutput": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "decision": {
+          "enum": [
+            "PROPOSE",
+            "ABSTAIN"
+          ],
+          "title": "Decision",
+          "type": "string"
+        },
+        "delta": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PID"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "candidate_pid": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PID"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reason": {
+          "maxLength": 2000,
+          "title": "Reason",
+          "type": "string"
+        },
+        "expected_effect": {
+          "maxLength": 2000,
+          "title": "Expected Effect",
+          "type": "string"
+        },
+        "risk_notes": {
+          "items": {
+            "maxLength": 2000,
+            "type": "string"
+          },
+          "maxItems": 10,
+          "title": "Risk Notes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "schema_version",
+        "decision",
+        "delta",
+        "candidate_pid",
+        "reason",
+        "expected_effect",
+        "risk_notes"
+      ],
+      "title": "ControlOutput",
+      "type": "object"
+    },
+    "PID": {
+      "additionalProperties": {
+        "type": "number"
+      },
+      "description": "A named numeric parameter set. kp/ki/kd remain the example's parameters.",
+      "title": "PID",
+      "type": "object"
+    },
+    "PlantState": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "default": "B \u56de\u8def\u72b6\u6001",
+          "maxLength": 80,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "aging": {
+          "$ref": "#/$defs/ComponentAging"
+        }
+      },
+      "title": "PlantState",
+      "type": "object"
+    },
+    "SourceKind": {
+      "enum": [
+        "EXAMPLE",
+        "SIMULATION",
+        "REAL"
+      ],
+      "title": "SourceKind",
+      "type": "string"
+    },
+    "TuningRun": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "state_version": {
+          "default": 0,
+          "title": "State Version",
+          "type": "integer"
+        },
+        "status": {
+          "enum": [
+            "QUEUED",
+            "BASELINE_RUNNING",
+            "SEARCHING",
+            "AGENT_RUNNING",
+            "TRIAL_RUNNING",
+            "COMPLETED",
+            "NO_SAFE_CANDIDATE",
+            "AGENT_ABSTAINED",
+            "FAILED",
+            "CANCELLED"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "source_kind": {
+          "$ref": "#/$defs/SourceKind"
+        },
+        "created_at": {
+          "title": "Created At",
+          "type": "string"
+        },
+        "updated_at": {
+          "title": "Updated At",
+          "type": "string"
+        },
+        "model_version": {
+          "title": "Model Version",
+          "type": "string"
+        },
+        "scenario_version": {
+          "title": "Scenario Version",
+          "type": "string"
+        },
+        "plant_state": {
+          "$ref": "#/$defs/PlantState"
+        },
+        "plant_state_hash": {
+          "default": "",
+          "title": "Plant State Hash",
+          "type": "string"
+        },
+        "assumptions": {
+          "additionalProperties": true,
+          "title": "Assumptions",
+          "type": "object"
+        },
+        "events": {
+          "additionalProperties": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "title": "Events",
+          "type": "object"
+        },
+        "baseline_pid": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Baseline Pid",
+          "type": "object"
+        },
+        "best_pid": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "type": "number"
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Best Pid"
+        },
+        "best_trial_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Best Trial Id"
+        },
+        "trials": {
+          "items": {
+            "$ref": "#/$defs/TuningTrial"
+          },
+          "title": "Trials",
+          "type": "array"
+        },
+        "rejections": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Rejections",
+          "type": "array"
+        },
+        "max_iterations": {
+          "title": "Max Iterations",
+          "type": "integer"
+        },
+        "no_improvement_count": {
+          "default": 0,
+          "title": "No Improvement Count",
+          "type": "integer"
+        },
+        "pending_iteration": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Pending Iteration"
+        },
+        "session_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Session Id"
+        },
+        "request_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Request Id"
+        },
+        "agent_sent": {
+          "default": false,
+          "title": "Agent Sent",
+          "type": "boolean"
+        },
+        "workflow_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Workflow Version"
+        },
+        "prepared_skill_hashes": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Prepared Skill Hashes",
+          "type": "object"
+        },
+        "context_receipt": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Context Receipt"
+        },
+        "context_delivered": {
+          "default": false,
+          "title": "Context Delivered",
+          "type": "boolean"
+        },
+        "agent_attempt_no": {
+          "default": 0,
+          "title": "Agent Attempt No",
+          "type": "integer"
+        },
+        "agent_failures": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "maxItems": 36,
+          "title": "Agent Failures",
+          "type": "array"
+        },
+        "search_reviews": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "maxItems": 1,
+          "title": "Search Reviews",
+          "type": "array"
+        },
+        "deadline_at": {
+          "title": "Deadline At",
+          "type": "string"
+        },
+        "pending_output": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ControlOutput"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "cancel_requested": {
+          "default": false,
+          "title": "Cancel Requested",
+          "type": "boolean"
+        },
+        "error": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Error"
+        }
+      },
+      "required": [
+        "schema_version",
+        "run_id",
+        "status",
+        "source_kind",
+        "created_at",
+        "updated_at",
+        "model_version",
+        "scenario_version",
+        "assumptions",
+        "events",
+        "baseline_pid",
+        "best_pid",
+        "best_trial_id",
+        "trials",
+        "max_iterations",
+        "deadline_at"
+      ],
+      "title": "TuningRun",
+      "type": "object"
+    },
+    "TuningTrial": {
+      "additionalProperties": false,
+      "properties": {
+        "trial_id": {
+          "title": "Trial Id",
+          "type": "string"
+        },
+        "iteration": {
+          "title": "Iteration",
+          "type": "integer"
+        },
+        "pid": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Pid",
+          "type": "object"
+        },
+        "result": {
+          "additionalProperties": true,
+          "title": "Result",
+          "type": "object"
+        },
+        "traces": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Traces",
+          "type": "object"
+        },
+        "trace_hashes": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Trace Hashes",
+          "type": "object"
+        },
+        "accepted": {
+          "title": "Accepted",
+          "type": "boolean"
+        },
+        "reason": {
+          "title": "Reason",
+          "type": "string"
+        },
+        "agent_output": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ControlOutput"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "agent_session_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Agent Session Id"
+        }
+      },
+      "required": [
+        "trial_id",
+        "iteration",
+        "pid",
+        "result",
+        "traces",
+        "trace_hashes",
+        "accepted",
+        "reason"
+      ],
+      "title": "TuningTrial",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "items": {
+      "items": {
+        "$ref": "#/$defs/TuningRun"
+      },
+      "title": "Items",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "items"
+  ],
+  "title": "TuningRuns",
+  "type": "object"
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "snapshot_id": "b00646b1-1613-4c21-9855-f576970c03ec",
+  "control_loop_id": "demo",
+  "as_of": "2026-09-22T00:02:00Z",
+  "window_start": "2026-09-22T00:00:00Z",
+  "window_end": "2026-09-22T00:02:00Z",
+  "sample_period_seconds": 1.0,
+  "source_kind": "EXAMPLE",
+  "adapter_id": "example-observation",
+  "adapter_version": "example-v1",
+  "pressure_unit": "demo_unit",
+  "operating_condition_version": "examples-v1",
+  "pid": {
+    "pid": {
+      "kp": 1.0,
+      "ki": 0.2,
+      "kd": 0.05
+    },
+    "pid_version": "initial-v1",
+    "effective_at": "2026-09-22T00:00:00Z",
+    "pid_form": "DEMO_PARALLEL_PID",
+    "parameter_units": {
+      "kp": "demo",
+      "ki": "demo",
+      "kd": "demo"
+    },
+    "operating_condition_version": "examples-v1"
+  },
+  "series": {
+    "series_ref": "a0331ce6-1054-4193-b801-e83e532c7762",
+    "sha256": "9c52f4019b36f5514fa88d429d1a05981dc736e165a9abb11d94c37b8c9193f1",
+    "sample_count": 121,
+    "start_at": "2026-09-22T00:00:00Z",
+    "end_at": "2026-09-22T00:02:00Z",
+    "duration_seconds": 120.0
+  }
+}

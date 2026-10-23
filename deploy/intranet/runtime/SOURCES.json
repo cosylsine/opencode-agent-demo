@@ -1,0 +1,21 @@
+{
+  "docker": {
+    "version": "28.5.2",
+    "url": "https://download.docker.com/linux/static/stable/x86_64/docker-28.5.2.tgz",
+    "sha256": "ea90cfd12e1eeb12aa1c971741adb8bd4ed88e2a574eaac13f5029a1dbc6300d"
+  },
+  "nvidia_container_toolkit": {
+    "version": "1.20.1",
+    "url": "https://github.com/NVIDIA/nvidia-container-toolkit/releases/download/v1.20.1/nvidia-container-toolkit_1.20.1_deb_amd64.tar.gz",
+    "upstream_archive_sha256": "14dc22489851d4f1a6d1bbfdfb51524c8f110091738570cddaddc09778a63ad9",
+    "contents": "nvidia-ctk, nvidia-cdi-hook, licenses; generated CDI uses native Docker support"
+  },
+  "ripgrep": {
+    "version": "15.1.0",
+    "platform": "x86_64-unknown-linux-musl",
+    "url": "https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15.1.0-x86_64-unknown-linux-musl.tar.gz",
+    "upstream_archive_sha256": "1c9297be4a084eea7ecaedf93eb03d058d6faae29bbc57ecdaf5063921491599",
+    "binary_sha256": "ebeaf56f8a25e102e9419933423738b3a2a613a444fd749d695e15eba53f71f2",
+    "purpose": "Offline OpenCode skill loading; copied to /opt/bin/rg by application Dockerfile"
+  }
+}

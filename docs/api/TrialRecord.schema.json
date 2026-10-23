@@ -1,0 +1,287 @@
+{
+  "$defs": {
+    "ErrorDetail": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "message": {
+          "maxLength": 2000,
+          "title": "Message",
+          "type": "string"
+        },
+        "retryable": {
+          "title": "Retryable",
+          "type": "boolean"
+        },
+        "trace_id": {
+          "title": "Trace Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "retryable",
+        "trace_id"
+      ],
+      "title": "ErrorDetail",
+      "type": "object"
+    },
+    "PID": {
+      "additionalProperties": {
+        "type": "number"
+      },
+      "description": "A named numeric parameter set. kp/ki/kd remain the example's parameters.",
+      "title": "PID",
+      "type": "object"
+    },
+    "SeriesArtifact": {
+      "additionalProperties": false,
+      "properties": {
+        "series_ref": {
+          "title": "Series Ref",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "sample_count": {
+          "exclusiveMinimum": 0,
+          "maximum": 1000,
+          "title": "Sample Count",
+          "type": "integer"
+        },
+        "start_at": {
+          "title": "Start At",
+          "type": "string"
+        },
+        "end_at": {
+          "title": "End At",
+          "type": "string"
+        },
+        "duration_seconds": {
+          "title": "Duration Seconds",
+          "type": "number"
+        }
+      },
+      "required": [
+        "series_ref",
+        "sha256",
+        "sample_count",
+        "start_at",
+        "end_at",
+        "duration_seconds"
+      ],
+      "title": "SeriesArtifact",
+      "type": "object"
+    },
+    "SourceKind": {
+      "enum": [
+        "EXAMPLE",
+        "SIMULATION",
+        "REAL"
+      ],
+      "title": "SourceKind",
+      "type": "string"
+    },
+    "TrialRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "iteration_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Iteration Id"
+        },
+        "candidate_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Candidate Id"
+        },
+        "control_loop_id": {
+          "title": "Control Loop Id",
+          "type": "string"
+        },
+        "trace_id": {
+          "title": "Trace Id",
+          "type": "string"
+        },
+        "purpose": {
+          "enum": [
+            "BASELINE",
+            "CANDIDATE"
+          ],
+          "title": "Purpose",
+          "type": "string"
+        },
+        "idempotency_key": {
+          "title": "Idempotency Key",
+          "type": "string"
+        },
+        "candidate_pid": {
+          "$ref": "#/$defs/PID"
+        },
+        "evaluation_context_ref": {
+          "title": "Evaluation Context Ref",
+          "type": "string"
+        },
+        "evaluation_context_hash": {
+          "title": "Evaluation Context Hash",
+          "type": "string"
+        },
+        "request_hash": {
+          "title": "Request Hash",
+          "type": "string"
+        },
+        "timeout_seconds": {
+          "exclusiveMinimum": 0,
+          "maximum": 120,
+          "title": "Timeout Seconds",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "schema_version",
+        "run_id",
+        "iteration_id",
+        "candidate_id",
+        "control_loop_id",
+        "trace_id",
+        "purpose",
+        "idempotency_key",
+        "candidate_pid",
+        "evaluation_context_ref",
+        "evaluation_context_hash",
+        "request_hash",
+        "timeout_seconds"
+      ],
+      "title": "TrialRequest",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "trial_id": {
+      "title": "Trial Id",
+      "type": "string"
+    },
+    "request": {
+      "$ref": "#/$defs/TrialRequest"
+    },
+    "status": {
+      "enum": [
+        "QUEUED",
+        "RUNNING",
+        "COMPLETED",
+        "FAILED",
+        "CANCELLED",
+        "UNKNOWN"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "source_kind": {
+      "$ref": "#/$defs/SourceKind"
+    },
+    "adapter_id": {
+      "title": "Adapter Id",
+      "type": "string"
+    },
+    "adapter_version": {
+      "title": "Adapter Version",
+      "type": "string"
+    },
+    "created_at": {
+      "title": "Created At",
+      "type": "string"
+    },
+    "started_at": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Started At"
+    },
+    "finished_at": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Finished At"
+    },
+    "series": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/SeriesArtifact"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "error": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ErrorDetail"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "trial_id",
+    "request",
+    "status",
+    "source_kind",
+    "adapter_id",
+    "adapter_version",
+    "created_at",
+    "started_at",
+    "finished_at",
+    "series",
+    "error"
+  ],
+  "title": "TrialRecord",
+  "type": "object"
+}

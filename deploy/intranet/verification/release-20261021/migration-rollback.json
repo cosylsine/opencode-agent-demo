@@ -1,0 +1,19 @@
+{
+  "baseline_image": "sha256:b5390fad6856728418d40eb74b79787cde538d17c57ff2f73eadf9ff7b0bf9eb",
+  "baseline_schema": "0005",
+  "target_image": "sha256:529e6be3f5e8389e42fa0d013a50eddd3f5e19d71b1c423a7aa8a83413c6b765",
+  "target_schema": "0007",
+  "old_history_owned_by_admin": true,
+  "field_config_and_secrets_unchanged": true,
+  "custom_catalog_preserved": true,
+  "removed_code_not_left_behind": true,
+  "application_start": true,
+  "rollback_exact_database_config_secrets_and_script": true,
+  "old_image_restarted": true,
+  "backup_complete": true,
+  "test_model": "no real Qwen; isolated local rehearsal",
+  "fixture": "/home/xjx/opencode-agent-demo-deploy/verification/release-20261021/upgrade-fixture",
+  "rollback_with_missing_deploy_script": true,
+  "repeat_apply_rejected_without_stopping_service": true,
+  "fixture_cleaned_after_verification": true
+}

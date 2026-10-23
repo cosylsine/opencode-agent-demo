@@ -1,0 +1,28 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "message": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Message",
+      "type": "string"
+    },
+    "scenario_id": {
+      "default": "improvable",
+      "maxLength": 80,
+      "title": "Scenario Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "message"
+  ],
+  "title": "ChatRequest",
+  "type": "object"
+}

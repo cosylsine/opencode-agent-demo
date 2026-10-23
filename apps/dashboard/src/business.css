@@ -1,0 +1,260 @@
+/* Business workspaces share the department workspace frame and design tokens. */
+.office-root .of-content.of-business-content {
+  display: flex;
+  padding: 0;
+  overflow: hidden;
+}
+.of-business {
+  --ink: var(--of-ink);
+  --muted: #677c75;
+  --line: var(--of-line);
+  --teal: var(--of-green);
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+}
+.of-business .embedded-workspace {
+  height: 100%;
+  background: var(--of-bg);
+}
+.of-business .app-sidebar {
+  background: #fff;
+  color: var(--of-ink);
+  border-color: var(--of-line);
+}
+.of-business .sidebar-brand {
+  height: 54px;
+  padding: 10px 18px;
+  border-bottom: 1px solid #edf0eb;
+}
+.of-business .context-title {
+  font-size: 12px;
+  color: #678176;
+  font-weight: 600;
+}
+.of-business .sidebar-close,
+.of-business .icon-button {
+  color: #6a8276;
+}
+.of-business .sidebar-close:hover:not(:disabled),
+.of-business .icon-button:hover:not(:disabled) {
+  background: #eaf3eb;
+  color: var(--of-green);
+}
+.of-business .workspace-header {
+  min-height: 54px;
+  padding: 7px 24px 7px 14px;
+  border-color: var(--of-line);
+  background: #fff;
+}
+.of-business .workspace-title p {
+  margin: 0;
+  color: #789083;
+  font-size: 11px;
+}
+.of-business .workspace-opencode img {
+  width: 84px;
+  opacity: 0.5;
+}
+.of-business .health {
+  font-size: 10px;
+  min-height: 26px;
+  padding: 4px 9px;
+  font-weight: 500;
+}
+.of-business .health.ready {
+  background: #f2f7f0;
+  border-color: #d6e4d6;
+  color: #58775b;
+}
+.of-business .workspace-foot {
+  background: var(--of-bg);
+  color: #8b9e90;
+  border-top: 1px solid #e9eee7;
+  font-size: 9px;
+}
+.of-business .rail-resizer:hover,
+.of-business .rail-resizer:focus-visible {
+  background: #c7dfd1;
+}
+.of-business .chat-rail-head {
+  padding: 16px 18px 12px;
+}
+.of-business .chat-rail-head h2,
+.of-business .history h2 {
+  font-size: 12px;
+  color: #678176;
+}
+.of-business .chat-rail-head button,
+.of-business .history > button {
+  background: #fff;
+  border-color: #dfe7e0;
+  color: #39776a;
+}
+.of-business .session-filter input {
+  border-color: var(--of-line);
+  background: #f8faf6;
+  color: var(--of-ink);
+}
+.of-business .session-filter input::placeholder {
+  color: #91a096;
+}
+.of-business .rail-list-label,
+.of-business .chat-list-empty,
+.of-business .history-hint,
+.of-business .history .empty,
+.of-business .run small,
+.of-business .chat-session-select small {
+  color: #8b9e90;
+}
+.of-business .chat-session-row:hover,
+.of-business .chat-session-row:focus-within,
+.of-business .chat-session-row.selected,
+.of-business .run:hover:not(:disabled),
+.of-business .run.selected {
+  background: #edf4e9;
+  border-color: #e4ecde;
+  color: #315d47;
+}
+.of-business .chat-session-select,
+.of-business .chat-session-select:hover:not(:disabled),
+.of-business .run {
+  color: #456b58;
+}
+.of-business .chat-session-select:hover:not(:disabled) {
+  background: transparent;
+}
+.of-business .chat-session-more {
+  color: #7b9587;
+}
+.of-business .chat-session-more:hover:not(:disabled) {
+  background: #dfeedd;
+  color: #315d47;
+}
+.of-business .run-status {
+  color: #60866c;
+}
+.of-business .run.selected .run-indicator {
+  background: #719c71;
+  box-shadow: 0 0 0 3px #dcebd9;
+}
+.of-business .history {
+  padding: 18px 12px;
+}
+.of-business .chat-shell,
+.of-business .chat-compose,
+.of-business .console-main {
+  background: var(--of-bg);
+}
+.of-business .chat-welcome h2 {
+  color: var(--of-ink);
+  font-size: 28px;
+}
+.of-business .chat-symbol,
+.of-business .chat-avatar {
+  border-color: #dfe7d8;
+  background: #eaf1e4;
+  color: #6b8d4b;
+}
+.of-business .chat-entry.user {
+  border-color: transparent;
+  background: #edf3e6;
+}
+.of-business .chat-compose form {
+  border-color: #d8e4cd;
+  border-radius: 12px;
+  box-shadow: none;
+}
+.of-business .chat-compose form:focus-within {
+  border-color: #82a88a;
+  box-shadow: 0 0 0 2px #e3eedf;
+}
+.of-business .chat-compose-foot button,
+.of-business .primary {
+  background: var(--of-green);
+  border-color: var(--of-green);
+  color: #fff;
+}
+.of-business .primary:hover:not(:disabled),
+.of-business .chat-compose-foot button:hover:not(:disabled) {
+  background: #0d5548;
+  border-color: #0d5548;
+  color: #fff;
+}
+.of-business .console-scroll,
+.of-business .page-scroll {
+  padding: 26px 30px;
+}
+.of-business .panel,
+.of-business .tuning-card {
+  border-color: var(--of-line);
+  border-radius: 12px;
+  color: var(--of-ink);
+  box-shadow: none;
+}
+.of-business .console-main > .toolbar,
+.of-business .tuning-toolbar {
+  background: #fff;
+  color: var(--of-ink);
+  border: 1px solid var(--of-line);
+}
+.of-business .console-main > .toolbar {
+  border-width: 0 0 1px;
+  padding: 20px 30px;
+}
+.of-business .tuning-toolbar strong {
+  font-size: 17px;
+}
+.of-business .tuning-toolbar p {
+  color: #789083;
+  font-size: 12px;
+}
+.of-business .empty-state {
+  background: #fff;
+}
+.of-business .tuning-comparison > div,
+.of-business .tuning-events > div {
+  background: #f2f6ed;
+}
+.of-business .tuning-note {
+  background: #eaf3e5;
+  color: #4d724b;
+}
+@media (max-width: 900px) {
+  .of-business .app-sidebar {
+    box-shadow: 12px 0 36px #203d381f;
+  }
+  .of-business .sidebar-backdrop {
+    background: #203d3859;
+  }
+}
+@media (max-width: 600px) {
+  .of-business .workspace-header {
+    min-height: 44px;
+    padding: 4px 12px 4px 8px;
+  }
+  .of-business .workspace-title p {
+    font-size: 10px;
+  }
+  .of-business .health {
+    width: 7px;
+    height: 7px;
+    min-height: 7px;
+    padding: 0;
+    font-size: 0;
+  }
+  .of-business .console-scroll,
+  .of-business .page-scroll {
+    padding: 16px 12px;
+  }
+  .of-business .console-main > .toolbar {
+    padding: 14px 16px;
+  }
+  .of-business .tuning-toolbar {
+    padding: 18px;
+  }
+  .of-business .chat-welcome h2 {
+    font-size: 24px;
+  }
+}

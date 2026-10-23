@@ -1,0 +1,111 @@
+{
+  "$defs": {
+    "SeriesPoint": {
+      "additionalProperties": false,
+      "properties": {
+        "timestamp": {
+          "title": "Timestamp",
+          "type": "string"
+        },
+        "elapsed_seconds": {
+          "minimum": 0,
+          "title": "Elapsed Seconds",
+          "type": "number"
+        },
+        "pressure": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Pressure"
+        },
+        "target_pressure": {
+          "title": "Target Pressure",
+          "type": "number"
+        },
+        "quality": {
+          "enum": [
+            "GOOD",
+            "MISSING",
+            "BAD"
+          ],
+          "title": "Quality",
+          "type": "string"
+        }
+      },
+      "required": [
+        "timestamp",
+        "elapsed_seconds",
+        "pressure",
+        "target_pressure",
+        "quality"
+      ],
+      "title": "SeriesPoint",
+      "type": "object"
+    },
+    "SourceKind": {
+      "enum": [
+        "EXAMPLE",
+        "SIMULATION",
+        "REAL"
+      ],
+      "title": "SourceKind",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "series_ref": {
+      "title": "Series Ref",
+      "type": "string"
+    },
+    "source_kind": {
+      "$ref": "#/$defs/SourceKind"
+    },
+    "pressure_unit": {
+      "title": "Pressure Unit",
+      "type": "string"
+    },
+    "original_sample_count": {
+      "title": "Original Sample Count",
+      "type": "integer"
+    },
+    "returned_sample_count": {
+      "title": "Returned Sample Count",
+      "type": "integer"
+    },
+    "downsampled": {
+      "title": "Downsampled",
+      "type": "boolean"
+    },
+    "points": {
+      "items": {
+        "$ref": "#/$defs/SeriesPoint"
+      },
+      "maxItems": 1000,
+      "title": "Points",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "series_ref",
+    "source_kind",
+    "pressure_unit",
+    "original_sample_count",
+    "returned_sample_count",
+    "downsampled",
+    "points"
+  ],
+  "title": "SeriesResponse",
+  "type": "object"
+}

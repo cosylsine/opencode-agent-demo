@@ -1,0 +1,10 @@
+{
+  "disc": "/home/xjx/opencode-agent-demo-deploy/delivery/intranet-20261021/disc-01",
+  "bytes": 475349449,
+  "files": 956,
+  "manifest_covers_all_files": true,
+  "no_runtime_data_or_live_config": true,
+  "no_symlinks": true,
+  "corrupt_file_rejected": true,
+  "disc_manifest_sha256": "d23af62d030ae57c1045c323dcdaf1f71fe8dface95efd13716488a325eb8d03"
+}

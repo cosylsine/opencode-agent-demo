@@ -1,0 +1,104 @@
+{
+  "$defs": {
+    "PID": {
+      "additionalProperties": {
+        "type": "number"
+      },
+      "description": "A named numeric parameter set. kp/ki/kd remain the example's parameters.",
+      "title": "PID",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "run_id": {
+      "title": "Run Id",
+      "type": "string"
+    },
+    "iteration_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Iteration Id"
+    },
+    "candidate_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Candidate Id"
+    },
+    "control_loop_id": {
+      "title": "Control Loop Id",
+      "type": "string"
+    },
+    "trace_id": {
+      "title": "Trace Id",
+      "type": "string"
+    },
+    "purpose": {
+      "enum": [
+        "BASELINE",
+        "CANDIDATE"
+      ],
+      "title": "Purpose",
+      "type": "string"
+    },
+    "idempotency_key": {
+      "title": "Idempotency Key",
+      "type": "string"
+    },
+    "candidate_pid": {
+      "$ref": "#/$defs/PID"
+    },
+    "evaluation_context_ref": {
+      "title": "Evaluation Context Ref",
+      "type": "string"
+    },
+    "evaluation_context_hash": {
+      "title": "Evaluation Context Hash",
+      "type": "string"
+    },
+    "request_hash": {
+      "title": "Request Hash",
+      "type": "string"
+    },
+    "timeout_seconds": {
+      "exclusiveMinimum": 0,
+      "maximum": 120,
+      "title": "Timeout Seconds",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "schema_version",
+    "run_id",
+    "iteration_id",
+    "candidate_id",
+    "control_loop_id",
+    "trace_id",
+    "purpose",
+    "idempotency_key",
+    "candidate_pid",
+    "evaluation_context_ref",
+    "evaluation_context_hash",
+    "request_hash",
+    "timeout_seconds"
+  ],
+  "title": "TrialRequest",
+  "type": "object"
+}

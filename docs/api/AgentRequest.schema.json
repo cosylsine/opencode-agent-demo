@@ -1,0 +1,51 @@
+{
+  "$defs": {
+    "SourceKind": {
+      "enum": [
+        "EXAMPLE",
+        "SIMULATION",
+        "REAL"
+      ],
+      "title": "SourceKind",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "request_id": {
+      "title": "Request Id",
+      "type": "string"
+    },
+    "run_id": {
+      "title": "Run Id",
+      "type": "string"
+    },
+    "control_loop_id": {
+      "title": "Control Loop Id",
+      "type": "string"
+    },
+    "source_kind": {
+      "$ref": "#/$defs/SourceKind"
+    },
+    "call_context_token": {
+      "minLength": 16,
+      "title": "Call Context Token",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "request_id",
+    "run_id",
+    "control_loop_id",
+    "source_kind",
+    "call_context_token"
+  ],
+  "title": "AgentRequest",
+  "type": "object"
+}

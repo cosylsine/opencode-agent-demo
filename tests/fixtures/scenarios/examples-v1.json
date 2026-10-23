@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "source_kind": "EXAMPLE",
+  "scenario_version": "examples-v1",
+  "program_version": "example-v1",
+  "metrics_version": "metrics-v1",
+  "target_pressure": 30.0,
+  "pressure_unit": "demo_unit",
+  "duration_seconds": 120,
+  "sample_period_seconds": 1,
+  "seed": 0,
+  "scenarios": ["normal", "improvable", "no_improvement"],
+  "expected": {
+    "baseline": {"steady_state_error": 0.10000784, "score": 0.26667088},
+    "improved": {"steady_state_error": 0.05000392, "score": 0.05166877, "settling_time_s": 11},
+    "worse": {"steady_state_error": 0.16251274, "score": 0.30834018},
+    "unsafe": {"peak_pressure": 31.0}
+  }
+}

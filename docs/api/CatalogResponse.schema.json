@@ -1,0 +1,176 @@
+{
+  "$defs": {
+    "CatalogAgent": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "mode": {
+          "title": "Mode",
+          "type": "string"
+        },
+        "skills": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Skills",
+          "type": "array"
+        },
+        "tools": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Tools",
+          "type": "array"
+        }
+      },
+      "required": [
+        "name",
+        "description",
+        "mode",
+        "skills",
+        "tools"
+      ],
+      "title": "CatalogAgent",
+      "type": "object"
+    },
+    "CatalogSkill": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "triggers": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Triggers",
+          "type": "array"
+        },
+        "agents": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Agents",
+          "type": "array"
+        },
+        "registered": {
+          "title": "Registered",
+          "type": "boolean"
+        },
+        "deleted": {
+          "default": false,
+          "title": "Deleted",
+          "type": "boolean"
+        },
+        "deletable": {
+          "default": false,
+          "title": "Deletable",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "name",
+        "title",
+        "description",
+        "triggers",
+        "agents",
+        "registered"
+      ],
+      "title": "CatalogSkill",
+      "type": "object"
+    },
+    "CatalogTool": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "agents": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Agents",
+          "type": "array"
+        }
+      },
+      "required": [
+        "name",
+        "description",
+        "agents"
+      ],
+      "title": "CatalogTool",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "agents": {
+      "items": {
+        "$ref": "#/$defs/CatalogAgent"
+      },
+      "title": "Agents",
+      "type": "array"
+    },
+    "skills": {
+      "items": {
+        "$ref": "#/$defs/CatalogSkill"
+      },
+      "title": "Skills",
+      "type": "array"
+    },
+    "deleted_skills": {
+      "items": {
+        "$ref": "#/$defs/CatalogSkill"
+      },
+      "title": "Deleted Skills",
+      "type": "array"
+    },
+    "tools": {
+      "items": {
+        "$ref": "#/$defs/CatalogTool"
+      },
+      "title": "Tools",
+      "type": "array"
+    },
+    "template": {
+      "title": "Template",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "agents",
+    "skills",
+    "deleted_skills",
+    "tools",
+    "template"
+  ],
+  "title": "CatalogResponse",
+  "type": "object"
+}

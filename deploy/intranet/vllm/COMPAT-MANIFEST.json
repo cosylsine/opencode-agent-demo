@@ -1,0 +1,9 @@
+{
+  "package": "torchcodec",
+  "version": "0.17.0+cpu",
+  "wheel": "torchcodec-0.17.0+cpu-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+  "source": "https://download.pytorch.org/whl/cpu/torchcodec-0.17.0%2Bcpu-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+  "published_sha256": "de8e58e5f30692ee7cf92b1b313d0ffdeaac95148525ef2a865067fca0255246",
+  "reason": "Upstream cu129 image contains a CUDA 13 TorchCodec build, whose eager CLI import fails on libnvrtc.so.13. A matching-version CPU media codec is provided as a read-only PYTHONPATH overlay. GPU model inference still uses the unchanged PyTorch CUDA 12.9 build.",
+  "compatibility_reference": "https://github.com/meta-pytorch/torchcodec#compatibility-with-torch-versions"
+}

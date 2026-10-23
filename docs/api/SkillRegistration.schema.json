@@ -1,0 +1,47 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "title": {
+      "maxLength": 80,
+      "minLength": 1,
+      "title": "Title",
+      "type": "string"
+    },
+    "description": {
+      "maxLength": 300,
+      "minLength": 1,
+      "title": "Description",
+      "type": "string"
+    },
+    "triggers": {
+      "items": {
+        "maxLength": 40,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 12,
+      "minItems": 1,
+      "title": "Triggers",
+      "type": "array"
+    },
+    "instructions": {
+      "default": "",
+      "maxLength": 4000,
+      "title": "Instructions",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "title",
+    "description",
+    "triggers"
+  ],
+  "title": "SkillRegistration",
+  "type": "object"
+}

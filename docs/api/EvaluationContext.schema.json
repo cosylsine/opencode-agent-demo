@@ -1,0 +1,266 @@
+{
+  "$defs": {
+    "Bound": {
+      "additionalProperties": false,
+      "properties": {
+        "min": {
+          "title": "Min",
+          "type": "number"
+        },
+        "max": {
+          "title": "Max",
+          "type": "number"
+        },
+        "max_delta": {
+          "minimum": 0,
+          "title": "Max Delta",
+          "type": "number"
+        }
+      },
+      "required": [
+        "min",
+        "max",
+        "max_delta"
+      ],
+      "title": "Bound",
+      "type": "object"
+    },
+    "Constraints": {
+      "additionalProperties": false,
+      "properties": {
+        "kp": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Bound"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "ki": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Bound"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "kd": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Bound"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "parameter_bounds": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "$ref": "#/$defs/Bound"
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Parameter Bounds"
+        },
+        "equality_tolerance": {
+          "minimum": 0,
+          "title": "Equality Tolerance",
+          "type": "number"
+        }
+      },
+      "required": [
+        "equality_tolerance"
+      ],
+      "title": "Constraints",
+      "type": "object"
+    },
+    "MetricsConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "metrics_version": {
+          "const": "metrics-v1",
+          "title": "Metrics Version",
+          "type": "string"
+        },
+        "steady_tail_fraction": {
+          "title": "Steady Tail Fraction",
+          "type": "number"
+        },
+        "settling_band_absolute": {
+          "title": "Settling Band Absolute",
+          "type": "number"
+        },
+        "settling_hold_seconds": {
+          "title": "Settling Hold Seconds",
+          "type": "number"
+        },
+        "hard_pressure_min": {
+          "title": "Hard Pressure Min",
+          "type": "number"
+        },
+        "hard_pressure_max": {
+          "title": "Hard Pressure Max",
+          "type": "number"
+        },
+        "target_error": {
+          "title": "Target Error",
+          "type": "number"
+        },
+        "target_overshoot": {
+          "title": "Target Overshoot",
+          "type": "number"
+        },
+        "target_std": {
+          "title": "Target Std",
+          "type": "number"
+        },
+        "target_settling": {
+          "title": "Target Settling",
+          "type": "number"
+        },
+        "min_improvement": {
+          "title": "Min Improvement",
+          "type": "number"
+        }
+      },
+      "required": [
+        "metrics_version",
+        "steady_tail_fraction",
+        "settling_band_absolute",
+        "settling_hold_seconds",
+        "hard_pressure_min",
+        "hard_pressure_max",
+        "target_error",
+        "target_overshoot",
+        "target_std",
+        "target_settling",
+        "min_improvement"
+      ],
+      "title": "MetricsConfig",
+      "type": "object"
+    },
+    "SourceKind": {
+      "enum": [
+        "EXAMPLE",
+        "SIMULATION",
+        "REAL"
+      ],
+      "title": "SourceKind",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "context_id": {
+      "title": "Context Id",
+      "type": "string"
+    },
+    "snapshot_id": {
+      "title": "Snapshot Id",
+      "type": "string"
+    },
+    "scenario_id": {
+      "title": "Scenario Id",
+      "type": "string"
+    },
+    "scenario_version": {
+      "title": "Scenario Version",
+      "type": "string"
+    },
+    "source_kind": {
+      "$ref": "#/$defs/SourceKind"
+    },
+    "adapter_id": {
+      "title": "Adapter Id",
+      "type": "string"
+    },
+    "adapter_version": {
+      "title": "Adapter Version",
+      "type": "string"
+    },
+    "program_version": {
+      "title": "Program Version",
+      "type": "string"
+    },
+    "target_pressure": {
+      "title": "Target Pressure",
+      "type": "number"
+    },
+    "pressure_unit": {
+      "title": "Pressure Unit",
+      "type": "string"
+    },
+    "pid_form": {
+      "title": "Pid Form",
+      "type": "string"
+    },
+    "start_at": {
+      "title": "Start At",
+      "type": "string"
+    },
+    "duration_seconds": {
+      "title": "Duration Seconds",
+      "type": "number"
+    },
+    "sample_period_seconds": {
+      "title": "Sample Period Seconds",
+      "type": "number"
+    },
+    "seed": {
+      "title": "Seed",
+      "type": "integer"
+    },
+    "metrics_config": {
+      "$ref": "#/$defs/MetricsConfig"
+    },
+    "constraints": {
+      "$ref": "#/$defs/Constraints"
+    },
+    "context_hash": {
+      "title": "Context Hash",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "context_id",
+    "snapshot_id",
+    "scenario_id",
+    "scenario_version",
+    "source_kind",
+    "adapter_id",
+    "adapter_version",
+    "program_version",
+    "target_pressure",
+    "pressure_unit",
+    "pid_form",
+    "start_at",
+    "duration_seconds",
+    "sample_period_seconds",
+    "seed",
+    "metrics_config",
+    "constraints",
+    "context_hash"
+  ],
+  "title": "EvaluationContext",
+  "type": "object"
+}

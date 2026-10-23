@@ -1,0 +1,653 @@
+{
+  "$defs": {
+    "ControlOutput": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "decision": {
+          "enum": [
+            "PROPOSE",
+            "ABSTAIN"
+          ],
+          "title": "Decision",
+          "type": "string"
+        },
+        "delta": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PID"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "candidate_pid": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PID"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reason": {
+          "maxLength": 2000,
+          "title": "Reason",
+          "type": "string"
+        },
+        "expected_effect": {
+          "maxLength": 2000,
+          "title": "Expected Effect",
+          "type": "string"
+        },
+        "risk_notes": {
+          "items": {
+            "maxLength": 2000,
+            "type": "string"
+          },
+          "maxItems": 10,
+          "title": "Risk Notes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "schema_version",
+        "decision",
+        "delta",
+        "candidate_pid",
+        "reason",
+        "expected_effect",
+        "risk_notes"
+      ],
+      "title": "ControlOutput",
+      "type": "object"
+    },
+    "ErrorDetail": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "message": {
+          "maxLength": 2000,
+          "title": "Message",
+          "type": "string"
+        },
+        "retryable": {
+          "title": "Retryable",
+          "type": "boolean"
+        },
+        "trace_id": {
+          "title": "Trace Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "retryable",
+        "trace_id"
+      ],
+      "title": "ErrorDetail",
+      "type": "object"
+    },
+    "Evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "feature": {
+          "maxLength": 2000,
+          "title": "Feature",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value",
+          "type": "number"
+        },
+        "interpretation": {
+          "maxLength": 2000,
+          "title": "Interpretation",
+          "type": "string"
+        }
+      },
+      "required": [
+        "feature",
+        "value",
+        "interpretation"
+      ],
+      "title": "Evidence",
+      "type": "object"
+    },
+    "IterationDetail": {
+      "additionalProperties": false,
+      "properties": {
+        "iteration_id": {
+          "title": "Iteration Id",
+          "type": "string"
+        },
+        "iteration_no": {
+          "title": "Iteration No",
+          "type": "integer"
+        },
+        "candidate_pid": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PID"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "trial_status": {
+          "anyOf": [
+            {
+              "enum": [
+                "QUEUED",
+                "RUNNING",
+                "COMPLETED",
+                "FAILED",
+                "CANCELLED",
+                "UNKNOWN"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Trial Status"
+        },
+        "series_ref": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Series Ref"
+        },
+        "metrics": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Metrics"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "score": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Score"
+        },
+        "accepted": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Accepted"
+        },
+        "reason_code": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Reason Code"
+        },
+        "control_output": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ControlOutput"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "iteration_id",
+        "iteration_no",
+        "candidate_pid",
+        "trial_status",
+        "series_ref",
+        "metrics",
+        "score",
+        "accepted",
+        "reason_code",
+        "control_output"
+      ],
+      "title": "IterationDetail",
+      "type": "object"
+    },
+    "Metrics": {
+      "additionalProperties": false,
+      "properties": {
+        "metrics_version": {
+          "title": "Metrics Version",
+          "type": "string"
+        },
+        "signed_steady_error": {
+          "title": "Signed Steady Error",
+          "type": "number"
+        },
+        "steady_state_error": {
+          "title": "Steady State Error",
+          "type": "number"
+        },
+        "iae": {
+          "title": "Iae",
+          "type": "number"
+        },
+        "overshoot_ratio": {
+          "title": "Overshoot Ratio",
+          "type": "number"
+        },
+        "pressure_std": {
+          "title": "Pressure Std",
+          "type": "number"
+        },
+        "settling_time_s": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Settling Time S"
+        },
+        "unavailable_reasons": {
+          "items": {
+            "maxLength": 2000,
+            "type": "string"
+          },
+          "maxItems": 10,
+          "title": "Unavailable Reasons",
+          "type": "array"
+        }
+      },
+      "required": [
+        "metrics_version",
+        "signed_steady_error",
+        "steady_state_error",
+        "iae",
+        "overshoot_ratio",
+        "pressure_std",
+        "settling_time_s",
+        "unavailable_reasons"
+      ],
+      "title": "Metrics",
+      "type": "object"
+    },
+    "MonitorOutput": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "assessment": {
+          "enum": [
+            "NORMAL_STABLE",
+            "STEADY_HIGH",
+            "STEADY_LOW",
+            "EXCESSIVE_OVERSHOOT",
+            "SUSTAINED_OSCILLATION",
+            "SLOW_RESPONSE",
+            "OPERATING_CONDITION_CHANGED",
+            "DATA_ANOMALY",
+            "UNCERTAIN"
+          ],
+          "title": "Assessment",
+          "type": "string"
+        },
+        "confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "needs_tuning": {
+          "title": "Needs Tuning",
+          "type": "boolean"
+        },
+        "manual_review_required": {
+          "title": "Manual Review Required",
+          "type": "boolean"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "maxItems": 10,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "reason": {
+          "maxLength": 2000,
+          "title": "Reason",
+          "type": "string"
+        },
+        "warnings": {
+          "items": {
+            "maxLength": 2000,
+            "type": "string"
+          },
+          "maxItems": 10,
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "schema_version",
+        "assessment",
+        "confidence",
+        "needs_tuning",
+        "manual_review_required",
+        "evidence",
+        "reason",
+        "warnings"
+      ],
+      "title": "MonitorOutput",
+      "type": "object"
+    },
+    "PID": {
+      "additionalProperties": {
+        "type": "number"
+      },
+      "description": "A named numeric parameter set. kp/ki/kd remain the example's parameters.",
+      "title": "PID",
+      "type": "object"
+    },
+    "PidSnapshot": {
+      "additionalProperties": false,
+      "properties": {
+        "pid": {
+          "$ref": "#/$defs/PID"
+        },
+        "pid_version": {
+          "title": "Pid Version",
+          "type": "string"
+        },
+        "effective_at": {
+          "title": "Effective At",
+          "type": "string"
+        },
+        "pid_form": {
+          "title": "Pid Form",
+          "type": "string"
+        },
+        "parameter_units": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Parameter Units",
+          "type": "object"
+        },
+        "operating_condition_version": {
+          "title": "Operating Condition Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "pid",
+        "pid_version",
+        "effective_at",
+        "pid_form",
+        "parameter_units",
+        "operating_condition_version"
+      ],
+      "title": "PidSnapshot",
+      "type": "object"
+    },
+    "SourceKind": {
+      "enum": [
+        "EXAMPLE",
+        "SIMULATION",
+        "REAL"
+      ],
+      "title": "SourceKind",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "run_id": {
+      "title": "Run Id",
+      "type": "string"
+    },
+    "control_loop_id": {
+      "title": "Control Loop Id",
+      "type": "string"
+    },
+    "scenario_id": {
+      "title": "Scenario Id",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "CREATED",
+        "DATA_LOADING",
+        "MONITOR_REQUESTED",
+        "MONITOR_COMPLETED",
+        "BASELINE_REQUESTED",
+        "BASELINE_RUNNING",
+        "BASELINE_COMPLETED",
+        "CANDIDATE_REQUESTED",
+        "CANDIDATE_VALIDATED",
+        "TRIAL_REQUESTED",
+        "TRIAL_RUNNING",
+        "TRIAL_COMPLETED",
+        "EVALUATING",
+        "CANDIDATE_ACCEPTED",
+        "CANDIDATE_REJECTED",
+        "NO_TUNING_REQUIRED",
+        "MANUAL_REVIEW_REQUIRED",
+        "SUCCEEDED",
+        "STOPPED_NO_IMPROVEMENT",
+        "STOPPED_MAX_ITERATIONS",
+        "STOPPED_TIMEOUT",
+        "FAILED_FINAL",
+        "CANCELLED"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "state_version": {
+      "title": "State Version",
+      "type": "integer"
+    },
+    "source_kind": {
+      "$ref": "#/$defs/SourceKind"
+    },
+    "created_at": {
+      "title": "Created At",
+      "type": "string"
+    },
+    "finished_at": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Finished At"
+    },
+    "actual_pid": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PidSnapshot"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "best_pid": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PID"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "best_metrics": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Metrics"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "best_score": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Best Score"
+    },
+    "observation_series_ref": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Observation Series Ref"
+    },
+    "baseline_series_ref": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Baseline Series Ref"
+    },
+    "monitor_output": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/MonitorOutput"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "iterations": {
+      "items": {
+        "$ref": "#/$defs/IterationDetail"
+      },
+      "maxItems": 5,
+      "title": "Iterations",
+      "type": "array"
+    },
+    "stop_reason": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Stop Reason"
+    },
+    "error": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ErrorDetail"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "cancel_requested": {
+      "default": false,
+      "title": "Cancel Requested",
+      "type": "boolean"
+    },
+    "parent_run_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Parent Run Id"
+    }
+  },
+  "required": [
+    "schema_version",
+    "run_id",
+    "control_loop_id",
+    "scenario_id",
+    "status",
+    "state_version",
+    "source_kind",
+    "created_at",
+    "finished_at",
+    "actual_pid",
+    "best_pid",
+    "best_metrics",
+    "best_score",
+    "observation_series_ref",
+    "baseline_series_ref",
+    "monitor_output",
+    "iterations",
+    "stop_reason",
+    "error"
+  ],
+  "title": "RunDetail",
+  "type": "object"
+}

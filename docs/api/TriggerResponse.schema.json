@@ -1,0 +1,35 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "trigger_id": {
+      "title": "Trigger Id",
+      "type": "string"
+    },
+    "run_id": {
+      "title": "Run Id",
+      "type": "string"
+    },
+    "coalesced": {
+      "title": "Coalesced",
+      "type": "boolean"
+    },
+    "status_url": {
+      "title": "Status Url",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "trigger_id",
+    "run_id",
+    "coalesced",
+    "status_url"
+  ],
+  "title": "TriggerResponse",
+  "type": "object"
+}

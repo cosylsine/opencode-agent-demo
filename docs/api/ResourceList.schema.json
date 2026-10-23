@@ -1,0 +1,246 @@
+{
+  "$defs": {
+    "AgentContent": {
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "maxLength": 80,
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "description": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "instructions": {
+          "default": "",
+          "maxLength": 8000,
+          "title": "Instructions",
+          "type": "string"
+        },
+        "greeting": {
+          "default": "",
+          "maxLength": 1000,
+          "title": "Greeting",
+          "type": "string"
+        },
+        "examples": {
+          "default": [],
+          "items": {
+            "maxLength": 300,
+            "type": "string"
+          },
+          "maxItems": 6,
+          "title": "Examples",
+          "type": "array"
+        },
+        "skills": {
+          "items": {
+            "$ref": "#/$defs/SkillRef"
+          },
+          "maxItems": 8,
+          "minItems": 1,
+          "title": "Skills",
+          "type": "array"
+        },
+        "tools": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 20,
+          "title": "Tools",
+          "type": "array"
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "skills"
+      ],
+      "title": "AgentContent",
+      "type": "object"
+    },
+    "ResourceInfo": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "skill",
+            "agent"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "owner_id": {
+          "title": "Owner Id",
+          "type": "string"
+        },
+        "visibility": {
+          "enum": [
+            "private",
+            "public"
+          ],
+          "title": "Visibility",
+          "type": "string"
+        },
+        "builtin": {
+          "title": "Builtin",
+          "type": "boolean"
+        },
+        "archived": {
+          "title": "Archived",
+          "type": "boolean"
+        },
+        "published_version": {
+          "title": "Published Version",
+          "type": "integer"
+        },
+        "content": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SkillContent"
+            },
+            {
+              "$ref": "#/$defs/AgentContent"
+            }
+          ],
+          "title": "Content"
+        },
+        "editable": {
+          "title": "Editable",
+          "type": "boolean"
+        },
+        "created_at": {
+          "title": "Created At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "owner_id",
+        "visibility",
+        "builtin",
+        "archived",
+        "published_version",
+        "content",
+        "editable",
+        "created_at"
+      ],
+      "title": "ResourceInfo",
+      "type": "object"
+    },
+    "SkillContent": {
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "maxLength": 80,
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "description": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "applicability": {
+          "default": "",
+          "maxLength": 2000,
+          "title": "Applicability",
+          "type": "string"
+        },
+        "inputs": {
+          "default": "",
+          "maxLength": 2000,
+          "title": "Inputs",
+          "type": "string"
+        },
+        "instructions": {
+          "maxLength": 12000,
+          "minLength": 1,
+          "title": "Instructions",
+          "type": "string"
+        },
+        "exceptions": {
+          "default": "",
+          "maxLength": 2000,
+          "title": "Exceptions",
+          "type": "string"
+        },
+        "output_format": {
+          "default": "",
+          "maxLength": 2000,
+          "title": "Output Format",
+          "type": "string"
+        },
+        "tools": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 20,
+          "title": "Tools",
+          "type": "array"
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "instructions"
+      ],
+      "title": "SkillContent",
+      "type": "object"
+    },
+    "SkillRef": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "version": {
+          "minimum": 1,
+          "title": "Version",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "version"
+      ],
+      "title": "SkillRef",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "items": {
+      "items": {
+        "$ref": "#/$defs/ResourceInfo"
+      },
+      "title": "Items",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "items"
+  ],
+  "title": "ResourceList",
+  "type": "object"
+}

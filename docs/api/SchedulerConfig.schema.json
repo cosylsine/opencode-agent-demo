@@ -1,0 +1,32 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "enabled": {
+      "title": "Enabled",
+      "type": "boolean"
+    },
+    "interval_seconds": {
+      "maximum": 86400,
+      "minimum": 30,
+      "title": "Interval Seconds",
+      "type": "integer"
+    },
+    "scenario_id": {
+      "title": "Scenario Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "enabled",
+    "interval_seconds",
+    "scenario_id"
+  ],
+  "title": "SchedulerConfig",
+  "type": "object"
+}

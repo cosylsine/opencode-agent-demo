@@ -1,0 +1,179 @@
+{
+  "$defs": {
+    "PID": {
+      "additionalProperties": {
+        "type": "number"
+      },
+      "description": "A named numeric parameter set. kp/ki/kd remain the example's parameters.",
+      "title": "PID",
+      "type": "object"
+    },
+    "PidSnapshot": {
+      "additionalProperties": false,
+      "properties": {
+        "pid": {
+          "$ref": "#/$defs/PID"
+        },
+        "pid_version": {
+          "title": "Pid Version",
+          "type": "string"
+        },
+        "effective_at": {
+          "title": "Effective At",
+          "type": "string"
+        },
+        "pid_form": {
+          "title": "Pid Form",
+          "type": "string"
+        },
+        "parameter_units": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Parameter Units",
+          "type": "object"
+        },
+        "operating_condition_version": {
+          "title": "Operating Condition Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "pid",
+        "pid_version",
+        "effective_at",
+        "pid_form",
+        "parameter_units",
+        "operating_condition_version"
+      ],
+      "title": "PidSnapshot",
+      "type": "object"
+    },
+    "SeriesArtifact": {
+      "additionalProperties": false,
+      "properties": {
+        "series_ref": {
+          "title": "Series Ref",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "sample_count": {
+          "exclusiveMinimum": 0,
+          "maximum": 1000,
+          "title": "Sample Count",
+          "type": "integer"
+        },
+        "start_at": {
+          "title": "Start At",
+          "type": "string"
+        },
+        "end_at": {
+          "title": "End At",
+          "type": "string"
+        },
+        "duration_seconds": {
+          "title": "Duration Seconds",
+          "type": "number"
+        }
+      },
+      "required": [
+        "series_ref",
+        "sha256",
+        "sample_count",
+        "start_at",
+        "end_at",
+        "duration_seconds"
+      ],
+      "title": "SeriesArtifact",
+      "type": "object"
+    },
+    "SourceKind": {
+      "enum": [
+        "EXAMPLE",
+        "SIMULATION",
+        "REAL"
+      ],
+      "title": "SourceKind",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "snapshot_id": {
+      "title": "Snapshot Id",
+      "type": "string"
+    },
+    "control_loop_id": {
+      "title": "Control Loop Id",
+      "type": "string"
+    },
+    "as_of": {
+      "title": "As Of",
+      "type": "string"
+    },
+    "window_start": {
+      "title": "Window Start",
+      "type": "string"
+    },
+    "window_end": {
+      "title": "Window End",
+      "type": "string"
+    },
+    "sample_period_seconds": {
+      "title": "Sample Period Seconds",
+      "type": "number"
+    },
+    "source_kind": {
+      "$ref": "#/$defs/SourceKind"
+    },
+    "adapter_id": {
+      "title": "Adapter Id",
+      "type": "string"
+    },
+    "adapter_version": {
+      "title": "Adapter Version",
+      "type": "string"
+    },
+    "pressure_unit": {
+      "title": "Pressure Unit",
+      "type": "string"
+    },
+    "operating_condition_version": {
+      "title": "Operating Condition Version",
+      "type": "string"
+    },
+    "pid": {
+      "$ref": "#/$defs/PidSnapshot"
+    },
+    "series": {
+      "$ref": "#/$defs/SeriesArtifact"
+    }
+  },
+  "required": [
+    "schema_version",
+    "snapshot_id",
+    "control_loop_id",
+    "as_of",
+    "window_start",
+    "window_end",
+    "sample_period_seconds",
+    "source_kind",
+    "adapter_id",
+    "adapter_version",
+    "pressure_unit",
+    "operating_condition_version",
+    "pid",
+    "series"
+  ],
+  "title": "ObservationSnapshot",
+  "type": "object"
+}

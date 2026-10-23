@@ -1,0 +1,29 @@
+# Replace ALL placeholders. Install only after nginx -t succeeds.
+# Backend must use DEMO_LOCAL_DEV=0 and the same proxy token and HTTPS origin.
+server {
+    listen 443 ssl;
+    server_name DEMO_HOST;
+    ssl_certificate /REPLACE/fullchain.pem;
+    ssl_certificate_key /REPLACE/privkey.pem;
+    auth_basic "719agent Demo";
+    auth_basic_user_file /REPLACE/demo.htpasswd;
+    allow ALLOWED_CIDR;
+    deny all;
+    client_max_body_size 32k;
+    root /data9-2/xjx/opencode-agent-demo/apps/dashboard/dist;
+    add_header X-Content-Type-Options nosniff always;
+    add_header Referrer-Policy no-referrer always;
+    location /internal/ { return 404; }
+    location /live { return 404; }
+    location /api/ {
+        proxy_pass http://127.0.0.1:18000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Authenticated-User $remote_user;
+        proxy_set_header X-Demo-Proxy-Token "REPLACE_WITH_DEMO_PROXY_TOKEN";
+        proxy_set_header Authorization "";
+        proxy_set_header X-Forwarded-For "";
+        proxy_set_header X-MCP-Service-Token "";
+        proxy_read_timeout 30s;
+    }
+    location / { try_files $uri $uri/ /index.html; }
+}

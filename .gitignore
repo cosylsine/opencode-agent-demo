@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+node_modules/
+dist/
+apps/dashboard/dist-layout-preview/
+var/
+deploy/runtime/
+.env
+*.db*
+apps/dashboard/test-results/
+apps/dashboard/playwright-report/
+bin/opencode

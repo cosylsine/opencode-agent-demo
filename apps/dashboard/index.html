@@ -1,0 +1,32 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="renderer" content="webkit"/><meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover,interactive-widget=resizes-content"/><meta name="theme-color" content="#142a35"/><title>PID 建议工作台 · EXAMPLE</title>
+<script id="chrome86-compat">
+(function () {
+  'use strict';
+  if (typeof Array.prototype.at !== 'function') {
+    Object.defineProperty(Array.prototype, 'at', {
+      configurable: true,
+      writable: true,
+      value: function (index) {
+        if (this === null || this === undefined) {
+          throw new TypeError('Array.at requires a value');
+        }
+        var items = Object(this);
+        var length = Math.min(Math.max(Math.trunc(+items.length) || 0, 0), 9007199254740991);
+        var offset = Math.trunc(+index) || 0;
+        if (offset < 0) offset += length;
+        return offset < 0 || offset >= length ? undefined : items[offset];
+      }
+    });
+  }
+  if (typeof Object.hasOwn !== 'function') {
+    Object.defineProperty(Object, 'hasOwn', {
+      configurable: true,
+      writable: true,
+      value: function (object, key) {
+        return Object.prototype.hasOwnProperty.call(object, key);
+      }
+    });
+  }
+})();
+</script>
+</head><body><div id="root"></div><script type="module" src="/src/main.tsx"></script></body></html>

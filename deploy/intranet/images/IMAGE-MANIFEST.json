@@ -1,0 +1,28 @@
+{
+  "application": {
+    "tag": "opencode-agent-demo:20261021-intranet-amd64",
+    "id": "sha256:529e6be3f5e8389e42fa0d013a50eddd3f5e19d71b1c423a7aa8a83413c6b765",
+    "architecture": "amd64",
+    "os": "linux",
+    "size": 1001406300
+  },
+  "runtime": {
+    "tag": "opencode-agent-demo-runtime:20261018-office-amd64",
+    "id": "sha256:339b9024f591c121b6f8d164e807f45b28d6ef08fa3e8c0b3914d7c1c41d08ef",
+    "architecture": "amd64",
+    "os": "linux",
+    "size": 980761085
+  },
+  "created_date": "2026-10-21",
+  "build_network": "none",
+  "archive_sha256": "ee051859323aff596c405912a9d02681fe0ba25c9b8d5ba72bc32bdf555279b2",
+  "archive_bytes": 342349991,
+  "database_head": "0007",
+  "runtime_versions": {
+    "Python": "3.13.2",
+    "Node": "22.23.3",
+    "OpenCode": "1.18.31"
+  },
+  "test_model_in_image": false,
+  "runtime_data_in_image": false
+}

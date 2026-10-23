@@ -1,0 +1,283 @@
+{
+  "$defs": {
+    "ControlOutput": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "decision": {
+          "enum": [
+            "PROPOSE",
+            "ABSTAIN"
+          ],
+          "title": "Decision",
+          "type": "string"
+        },
+        "delta": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PID"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "candidate_pid": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PID"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reason": {
+          "maxLength": 2000,
+          "title": "Reason",
+          "type": "string"
+        },
+        "expected_effect": {
+          "maxLength": 2000,
+          "title": "Expected Effect",
+          "type": "string"
+        },
+        "risk_notes": {
+          "items": {
+            "maxLength": 2000,
+            "type": "string"
+          },
+          "maxItems": 10,
+          "title": "Risk Notes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "schema_version",
+        "decision",
+        "delta",
+        "candidate_pid",
+        "reason",
+        "expected_effect",
+        "risk_notes"
+      ],
+      "title": "ControlOutput",
+      "type": "object"
+    },
+    "IterationDetail": {
+      "additionalProperties": false,
+      "properties": {
+        "iteration_id": {
+          "title": "Iteration Id",
+          "type": "string"
+        },
+        "iteration_no": {
+          "title": "Iteration No",
+          "type": "integer"
+        },
+        "candidate_pid": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PID"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "trial_status": {
+          "anyOf": [
+            {
+              "enum": [
+                "QUEUED",
+                "RUNNING",
+                "COMPLETED",
+                "FAILED",
+                "CANCELLED",
+                "UNKNOWN"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Trial Status"
+        },
+        "series_ref": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Series Ref"
+        },
+        "metrics": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Metrics"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "score": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Score"
+        },
+        "accepted": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Accepted"
+        },
+        "reason_code": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Reason Code"
+        },
+        "control_output": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ControlOutput"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "iteration_id",
+        "iteration_no",
+        "candidate_pid",
+        "trial_status",
+        "series_ref",
+        "metrics",
+        "score",
+        "accepted",
+        "reason_code",
+        "control_output"
+      ],
+      "title": "IterationDetail",
+      "type": "object"
+    },
+    "Metrics": {
+      "additionalProperties": false,
+      "properties": {
+        "metrics_version": {
+          "title": "Metrics Version",
+          "type": "string"
+        },
+        "signed_steady_error": {
+          "title": "Signed Steady Error",
+          "type": "number"
+        },
+        "steady_state_error": {
+          "title": "Steady State Error",
+          "type": "number"
+        },
+        "iae": {
+          "title": "Iae",
+          "type": "number"
+        },
+        "overshoot_ratio": {
+          "title": "Overshoot Ratio",
+          "type": "number"
+        },
+        "pressure_std": {
+          "title": "Pressure Std",
+          "type": "number"
+        },
+        "settling_time_s": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Settling Time S"
+        },
+        "unavailable_reasons": {
+          "items": {
+            "maxLength": 2000,
+            "type": "string"
+          },
+          "maxItems": 10,
+          "title": "Unavailable Reasons",
+          "type": "array"
+        }
+      },
+      "required": [
+        "metrics_version",
+        "signed_steady_error",
+        "steady_state_error",
+        "iae",
+        "overshoot_ratio",
+        "pressure_std",
+        "settling_time_s",
+        "unavailable_reasons"
+      ],
+      "title": "Metrics",
+      "type": "object"
+    },
+    "PID": {
+      "additionalProperties": {
+        "type": "number"
+      },
+      "description": "A named numeric parameter set. kp/ki/kd remain the example's parameters.",
+      "title": "PID",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "items": {
+      "items": {
+        "$ref": "#/$defs/IterationDetail"
+      },
+      "maxItems": 5,
+      "title": "Items",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "items"
+  ],
+  "title": "IterationsResponse",
+  "type": "object"
+}

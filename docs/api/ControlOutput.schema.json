@@ -1,0 +1,78 @@
+{
+  "$defs": {
+    "PID": {
+      "additionalProperties": {
+        "type": "number"
+      },
+      "description": "A named numeric parameter set. kp/ki/kd remain the example's parameters.",
+      "title": "PID",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "decision": {
+      "enum": [
+        "PROPOSE",
+        "ABSTAIN"
+      ],
+      "title": "Decision",
+      "type": "string"
+    },
+    "delta": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PID"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "candidate_pid": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PID"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "reason": {
+      "maxLength": 2000,
+      "title": "Reason",
+      "type": "string"
+    },
+    "expected_effect": {
+      "maxLength": 2000,
+      "title": "Expected Effect",
+      "type": "string"
+    },
+    "risk_notes": {
+      "items": {
+        "maxLength": 2000,
+        "type": "string"
+      },
+      "maxItems": 10,
+      "title": "Risk Notes",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "decision",
+    "delta",
+    "candidate_pid",
+    "reason",
+    "expected_effect",
+    "risk_notes"
+  ],
+  "title": "ControlOutput",
+  "type": "object"
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "run_id": "c01ac755-8a14-49a6-8df3-352a56d3402d",
+  "control_loop_id": "demo",
+  "scenario_id": "improvable",
+  "status": "CREATED",
+  "state_version": 0,
+  "source_kind": "EXAMPLE",
+  "created_at": "2026-09-22T10:48:41.044247Z",
+  "finished_at": null,
+  "actual_pid": null,
+  "best_pid": null,
+  "best_metrics": null,
+  "best_score": null,
+  "observation_series_ref": null,
+  "baseline_series_ref": null,
+  "monitor_output": null,
+  "iterations": [],
+  "stop_reason": null,
+  "error": null,
+  "cancel_requested": false,
+  "parent_run_id": null
+}

@@ -1,0 +1,84 @@
+{
+  "$defs": {
+    "ComponentHealth": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "ready": {
+          "title": "Ready",
+          "type": "boolean"
+        },
+        "version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Version"
+        },
+        "error_code": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Error Code"
+        }
+      },
+      "required": [
+        "name",
+        "ready",
+        "version",
+        "error_code"
+      ],
+      "title": "ComponentHealth",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "live": {
+      "title": "Live",
+      "type": "boolean"
+    },
+    "ready": {
+      "title": "Ready",
+      "type": "boolean"
+    },
+    "degraded": {
+      "title": "Degraded",
+      "type": "boolean"
+    },
+    "components": {
+      "items": {
+        "$ref": "#/$defs/ComponentHealth"
+      },
+      "maxItems": 20,
+      "title": "Components",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "live",
+    "ready",
+    "degraded",
+    "components"
+  ],
+  "title": "HealthResponse",
+  "type": "object"
+}

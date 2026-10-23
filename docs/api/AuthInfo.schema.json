@@ -1,0 +1,88 @@
+{
+  "$defs": {
+    "UserInfo": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "username": {
+          "title": "Username",
+          "type": "string"
+        },
+        "display_name": {
+          "title": "Display Name",
+          "type": "string"
+        },
+        "is_admin": {
+          "title": "Is Admin",
+          "type": "boolean"
+        },
+        "disabled": {
+          "title": "Disabled",
+          "type": "boolean"
+        },
+        "must_change_password": {
+          "title": "Must Change Password",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "username",
+        "display_name",
+        "is_admin",
+        "disabled",
+        "must_change_password"
+      ],
+      "title": "UserInfo",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "user": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/UserInfo"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "csrf_token": {
+      "title": "Csrf Token",
+      "type": "string"
+    },
+    "initialized": {
+      "title": "Initialized",
+      "type": "boolean"
+    },
+    "limits": {
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "default": {
+        "file_bytes": 20971520,
+        "attachments": 5
+      },
+      "title": "Limits",
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "user",
+    "csrf_token",
+    "initialized"
+  ],
+  "title": "AuthInfo",
+  "type": "object"
+}

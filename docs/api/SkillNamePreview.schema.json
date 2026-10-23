@@ -1,0 +1,20 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "name": {
+      "title": "Name",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "name"
+  ],
+  "title": "SkillNamePreview",
+  "type": "object"
+}

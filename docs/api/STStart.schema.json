@@ -1,0 +1,85 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "retry_from": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Retry From"
+    },
+    "title": {
+      "default": "ST \u4ee3\u7801\u4f18\u5316",
+      "maxLength": 80,
+      "minLength": 1,
+      "title": "Title",
+      "type": "string"
+    },
+    "filename": {
+      "default": "source.st",
+      "pattern": "^[^/\\\\\\x00-\\x1f]{1,100}\\.(?i:st|scl|txt)$",
+      "title": "Filename",
+      "type": "string"
+    },
+    "code": {
+      "maxLength": 12000,
+      "minLength": 1,
+      "title": "Code",
+      "type": "string"
+    },
+    "dialect": {
+      "default": "generic",
+      "enum": [
+        "generic",
+        "codesys",
+        "siemens",
+        "twincat"
+      ],
+      "title": "Dialect",
+      "type": "string"
+    },
+    "instructions": {
+      "default": "",
+      "maxLength": 2000,
+      "title": "Instructions",
+      "type": "string"
+    },
+    "actions": {
+      "default": [
+        "comment",
+        "test",
+        "review",
+        "fix"
+      ],
+      "items": {
+        "enum": [
+          "comment",
+          "test",
+          "review",
+          "fix"
+        ],
+        "type": "string"
+      },
+      "maxItems": 4,
+      "minItems": 1,
+      "title": "Actions",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "code"
+  ],
+  "title": "STStart",
+  "type": "object"
+}

@@ -1,0 +1,49 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "control_loop_id": {
+      "title": "Control Loop Id",
+      "type": "string"
+    },
+    "as_of": {
+      "title": "As Of",
+      "type": "string"
+    },
+    "window_seconds": {
+      "exclusiveMinimum": 0,
+      "maximum": 120,
+      "title": "Window Seconds",
+      "type": "integer"
+    },
+    "request_id": {
+      "title": "Request Id",
+      "type": "string"
+    },
+    "scenario_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Scenario Id"
+    }
+  },
+  "required": [
+    "schema_version",
+    "control_loop_id",
+    "as_of",
+    "window_seconds",
+    "request_id",
+    "scenario_id"
+  ],
+  "title": "SnapshotQuery",
+  "type": "object"
+}

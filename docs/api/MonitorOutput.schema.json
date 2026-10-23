@@ -1,0 +1,101 @@
+{
+  "$defs": {
+    "Evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "feature": {
+          "maxLength": 2000,
+          "title": "Feature",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value",
+          "type": "number"
+        },
+        "interpretation": {
+          "maxLength": 2000,
+          "title": "Interpretation",
+          "type": "string"
+        }
+      },
+      "required": [
+        "feature",
+        "value",
+        "interpretation"
+      ],
+      "title": "Evidence",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "assessment": {
+      "enum": [
+        "NORMAL_STABLE",
+        "STEADY_HIGH",
+        "STEADY_LOW",
+        "EXCESSIVE_OVERSHOOT",
+        "SUSTAINED_OSCILLATION",
+        "SLOW_RESPONSE",
+        "OPERATING_CONDITION_CHANGED",
+        "DATA_ANOMALY",
+        "UNCERTAIN"
+      ],
+      "title": "Assessment",
+      "type": "string"
+    },
+    "confidence": {
+      "maximum": 1,
+      "minimum": 0,
+      "title": "Confidence",
+      "type": "number"
+    },
+    "needs_tuning": {
+      "title": "Needs Tuning",
+      "type": "boolean"
+    },
+    "manual_review_required": {
+      "title": "Manual Review Required",
+      "type": "boolean"
+    },
+    "evidence": {
+      "items": {
+        "$ref": "#/$defs/Evidence"
+      },
+      "maxItems": 10,
+      "title": "Evidence",
+      "type": "array"
+    },
+    "reason": {
+      "maxLength": 2000,
+      "title": "Reason",
+      "type": "string"
+    },
+    "warnings": {
+      "items": {
+        "maxLength": 2000,
+        "type": "string"
+      },
+      "maxItems": 10,
+      "title": "Warnings",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "assessment",
+    "confidence",
+    "needs_tuning",
+    "manual_review_required",
+    "evidence",
+    "reason",
+    "warnings"
+  ],
+  "title": "MonitorOutput",
+  "type": "object"
+}

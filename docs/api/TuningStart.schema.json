@@ -1,0 +1,80 @@
+{
+  "$defs": {
+    "ComponentAging": {
+      "additionalProperties": false,
+      "description": "Dimensionless wear severity: 0 is nominal, 1 is maximum modeled wear.",
+      "properties": {
+        "feedwater_pump": {
+          "default": 0.0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Feedwater Pump",
+          "type": "number"
+        },
+        "feedwater_valve": {
+          "default": 0.0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Feedwater Valve",
+          "type": "number"
+        },
+        "boiler": {
+          "default": 0.0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Boiler",
+          "type": "number"
+        },
+        "turbine": {
+          "default": 0.0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Turbine",
+          "type": "number"
+        },
+        "condenser": {
+          "default": 0.0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Condenser",
+          "type": "number"
+        }
+      },
+      "title": "ComponentAging",
+      "type": "object"
+    },
+    "PlantState": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "default": "B \u56de\u8def\u72b6\u6001",
+          "maxLength": 80,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "aging": {
+          "$ref": "#/$defs/ComponentAging"
+        }
+      },
+      "title": "PlantState",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "plant_state": {
+      "$ref": "#/$defs/PlantState"
+    }
+  },
+  "required": [
+    "schema_version"
+  ],
+  "title": "TuningStart",
+  "type": "object"
+}

@@ -1,0 +1,121 @@
+{
+  "$defs": {
+    "Metrics": {
+      "additionalProperties": false,
+      "properties": {
+        "metrics_version": {
+          "title": "Metrics Version",
+          "type": "string"
+        },
+        "signed_steady_error": {
+          "title": "Signed Steady Error",
+          "type": "number"
+        },
+        "steady_state_error": {
+          "title": "Steady State Error",
+          "type": "number"
+        },
+        "iae": {
+          "title": "Iae",
+          "type": "number"
+        },
+        "overshoot_ratio": {
+          "title": "Overshoot Ratio",
+          "type": "number"
+        },
+        "pressure_std": {
+          "title": "Pressure Std",
+          "type": "number"
+        },
+        "settling_time_s": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Settling Time S"
+        },
+        "unavailable_reasons": {
+          "items": {
+            "maxLength": 2000,
+            "type": "string"
+          },
+          "maxItems": 10,
+          "title": "Unavailable Reasons",
+          "type": "array"
+        }
+      },
+      "required": [
+        "metrics_version",
+        "signed_steady_error",
+        "steady_state_error",
+        "iae",
+        "overshoot_ratio",
+        "pressure_std",
+        "settling_time_s",
+        "unavailable_reasons"
+      ],
+      "title": "Metrics",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "accepted": {
+      "title": "Accepted",
+      "type": "boolean"
+    },
+    "target_reached": {
+      "title": "Target Reached",
+      "type": "boolean"
+    },
+    "hard_constraints_passed": {
+      "title": "Hard Constraints Passed",
+      "type": "boolean"
+    },
+    "score": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Score"
+    },
+    "reason_code": {
+      "title": "Reason Code",
+      "type": "string"
+    },
+    "metrics": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Metrics"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "accepted",
+    "target_reached",
+    "hard_constraints_passed",
+    "score",
+    "reason_code",
+    "metrics"
+  ],
+  "title": "EvaluationDecision",
+  "type": "object"
+}

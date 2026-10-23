@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-21",
+  "status": "removed",
+  "reason": "superseded by complete cumulative release; upgrade and rollback rehearsed successfully",
+  "directories": [
+    {
+      "path": "delivery/b-loop-context-fix-20261019",
+      "files": 6,
+      "bytes": 343106242
+    },
+    {
+      "path": "delivery/b-loop-update-20261018",
+      "files": 97,
+      "bytes": 341723817
+    },
+    {
+      "path": "delivery/b-loop-workflow-fix-20261019",
+      "files": 28,
+      "bytes": 343917428
+    },
+    {
+      "path": "delivery/office-v1-20261018",
+      "files": 994,
+      "bytes": 374289660
+    }
+  ],
+  "bytes_reclaimed": 1403037147,
+  "preserved": [
+    "backups/",
+    "data/",
+    "vllm/",
+    "runtime/",
+    "source/",
+    "verification/ historical evidence",
+    "original archive in backups/release-before-20261021"
+  ],
+  "metadata_archive": "verification/release-20261021/superseded-disc-metadata"
+}

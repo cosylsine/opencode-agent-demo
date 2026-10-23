@@ -1,0 +1,27 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "autoupdate": false,
+  "share": "disabled",
+  "plugin": [],
+  "permission": {"*": "deny"},
+  "mcp": {
+    "office": {
+      "type": "local",
+      "command": [".venv/bin/python", "-m", "apps.office_mcp"],
+      "enabled": true,
+      "environment": {
+        "INTERNAL_API_BASE_URL": "{env:INTERNAL_API_BASE_URL}",
+        "MCP_SERVICE_TOKEN": "{env:MCP_SERVICE_TOKEN}"
+      }
+    },
+    "industrial_control": {
+      "type": "local",
+      "command": [".venv/bin/python", "-m", "apps.mcp_server"],
+      "enabled": true,
+      "environment": {
+        "INTERNAL_API_BASE_URL": "{env:INTERNAL_API_BASE_URL}",
+        "MCP_SERVICE_TOKEN": "{env:MCP_SERVICE_TOKEN}"
+      }
+    }
+  }
+}

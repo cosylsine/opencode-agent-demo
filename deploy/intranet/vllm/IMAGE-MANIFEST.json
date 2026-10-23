@@ -1,0 +1,34 @@
+{
+  "index_digest": "sha256:ff29e51a9457f191deb332b96fa6440584fa941aa2a548449b604e2b1e5e1eeb",
+  "platform_manifest_digest": "sha256:b18abb2df97b8f798e81862bd93f872ea18613372e2c3adc0cc2ac21e66ac12f",
+  "platform": {
+    "architecture": "amd64",
+    "os": "linux"
+  },
+  "upstream": "docker.io/vllm/vllm-openai:v0.31.0-cu129",
+  "bundled_tag": "opencode-demo-vllm:0.31.0-cu129",
+  "image_id": "sha256:423783aac4fefebfe6b67d6fc2810b88a1d4dc08ed8bba587c80b0d8973e0b8b",
+  "model_weights_included": false,
+  "retrieval": "Official Docker Hub manifest and signed blobs; public CDN mirror used for byte transfer; every layer verified against the official SHA-256 digest.",
+  "archive": "vllm-image.tar.gz (Docker load format, original gzip layers preserved)",
+  "cuda": "12.9.1",
+  "flashinfer": "0.7.0.post1 with bundled JIT cache",
+  "sources": [
+    "https://hub.docker.com/r/vllm/vllm-openai/tags?name=v0.31.0-cu129",
+    "https://recipes.vllm.ai/Qwen/Qwen3.8-27B",
+    "https://docs.vllm.ai/en/latest/deployment/docker/"
+  ],
+  "archive_bytes": 11016388648,
+  "archive_sha256": "8985e7fdd7ee55c706979faad0573b51991382a38c0cb5b3270dc3e169c05600",
+  "uncompressed_image_bytes": 26357336842,
+  "import_verified": true,
+  "runtime_versions": {
+    "vllm": "0.31.0+cu129",
+    "torch": "2.13.0+cu129",
+    "transformers": "5.17.0",
+    "flashinfer-python": "0.7.0.post1",
+    "flashinfer-jit-cache": "0.7.0.post1+cu129",
+    "torchcodec": "0.17.0+cpu"
+  },
+  "required_compat_overlay": "compat/ via vllm.sh; see COMPAT-MANIFEST.json"
+}

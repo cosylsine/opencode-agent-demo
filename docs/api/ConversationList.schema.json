@@ -1,0 +1,77 @@
+{
+  "$defs": {
+    "ConversationInfo": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "agent_id": {
+          "title": "Agent Id",
+          "type": "string"
+        },
+        "agent_version": {
+          "title": "Agent Version",
+          "type": "integer"
+        },
+        "agent_title": {
+          "title": "Agent Title",
+          "type": "string"
+        },
+        "greeting": {
+          "default": "",
+          "title": "Greeting",
+          "type": "string"
+        },
+        "examples": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Examples",
+          "type": "array"
+        },
+        "created_at": {
+          "title": "Created At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "agent_id",
+        "agent_version",
+        "agent_title",
+        "created_at"
+      ],
+      "title": "ConversationInfo",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "items": {
+      "items": {
+        "$ref": "#/$defs/ConversationInfo"
+      },
+      "title": "Items",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "items"
+  ],
+  "title": "ConversationList",
+  "type": "object"
+}

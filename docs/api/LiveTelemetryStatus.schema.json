@@ -1,0 +1,80 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "scenario_id": {
+      "title": "Scenario Id",
+      "type": "string"
+    },
+    "running": {
+      "title": "Running",
+      "type": "boolean"
+    },
+    "window_ready": {
+      "title": "Window Ready",
+      "type": "boolean"
+    },
+    "latest_sample_at": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Latest Sample At"
+    },
+    "pressure": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Pressure"
+    },
+    "target_pressure": {
+      "title": "Target Pressure",
+      "type": "number"
+    },
+    "sample_kind": {
+      "anyOf": [
+        {
+          "enum": [
+            "LIVE",
+            "SIMULATED_BACKFILL"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Sample Kind"
+    },
+    "jsonl_path": {
+      "title": "Jsonl Path",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "scenario_id",
+    "running",
+    "window_ready",
+    "latest_sample_at",
+    "pressure",
+    "target_pressure",
+    "sample_kind",
+    "jsonl_path"
+  ],
+  "title": "LiveTelemetryStatus",
+  "type": "object"
+}

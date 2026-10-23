@@ -1,0 +1,16 @@
+[Unit]
+Description=719agent authenticated GPU 0/1 model gateway (server9 only)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/data9-2/xjx/opencode-agent-demo
+ExecStart=/data9-2/xjx/opencode-agent-demo/.venv/bin/python scripts/model_gateway.py --key-file /data9-2/xjx/opencode-agent-demo/deploy/runtime/model-gateway-key
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+UMask=0077
+
+[Install]
+WantedBy=default.target

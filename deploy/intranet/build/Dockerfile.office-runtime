@@ -1,0 +1,4 @@
+# Office dependencies are vendored ahead of delivery; this build requires no network.
+FROM opencode-agent-demo-runtime:20261013-amd64
+COPY runtime/office-python/ /opt/venv/lib/python3.13/site-packages/
+RUN python -c "import docx, openpyxl, pypdf, defusedxml, lxml; print('Offline office dependencies OK')"

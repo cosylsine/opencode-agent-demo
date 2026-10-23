@@ -1,0 +1,643 @@
+{
+  "$defs": {
+    "STArtifact": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "download_url": {
+          "title": "Download Url",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "download_url"
+      ],
+      "title": "STArtifact",
+      "type": "object"
+    },
+    "STBug": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^B[0-9]{3}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "title": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "severity": {
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ],
+          "title": "Severity",
+          "type": "string"
+        },
+        "confidence": {
+          "enum": [
+            "confirmed",
+            "possible"
+          ],
+          "title": "Confidence",
+          "type": "string"
+        },
+        "line_start": {
+          "minimum": 1,
+          "title": "Line Start",
+          "type": "integer"
+        },
+        "line_end": {
+          "minimum": 1,
+          "title": "Line End",
+          "type": "integer"
+        },
+        "evidence": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Evidence",
+          "type": "string"
+        },
+        "explanation": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Explanation",
+          "type": "string"
+        },
+        "suggestion": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Suggestion",
+          "type": "string"
+        },
+        "disposition": {
+          "enum": [
+            "fixed",
+            "not_fixed",
+            "needs_context"
+          ],
+          "title": "Disposition",
+          "type": "string"
+        },
+        "fix_explanation": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Fix Explanation",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "severity",
+        "confidence",
+        "line_start",
+        "line_end",
+        "evidence",
+        "explanation",
+        "suggestion",
+        "disposition",
+        "fix_explanation"
+      ],
+      "title": "STBug",
+      "type": "object"
+    },
+    "STChecks": {
+      "additionalProperties": false,
+      "properties": {
+        "annotation_tokens_preserved": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Annotation Tokens Preserved"
+        },
+        "fixed_lexically_valid": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Fixed Lexically Valid"
+        },
+        "compiler": {
+          "const": "not_run",
+          "default": "not_run",
+          "title": "Compiler",
+          "type": "string"
+        },
+        "tests": {
+          "const": "not_run",
+          "default": "not_run",
+          "title": "Tests",
+          "type": "string"
+        },
+        "scan_verification": {
+          "default": "not_run",
+          "enum": [
+            "passed",
+            "not_supported",
+            "not_run"
+          ],
+          "title": "Scan Verification",
+          "type": "string"
+        },
+        "note": {
+          "default": "\u5df2\u68c0\u67e5\u8f93\u51fa\u7ed3\u6784\u3001\u539f\u6587\u5f15\u7528\u548c ST \u57fa\u7840\u7ed3\u6784\uff08\u7ed3\u675f\u7b26\u3001\u58f0\u660e\u3001\u5360\u4f4d\u7b26\u4e0e\u8f85\u52a9\u8c03\u7528\uff09\uff1b\u672a\u8c03\u7528 PLC \u7f16\u8bd1\u5668\uff0c\u672a\u5728\u76ee\u6807 PLC \u6267\u884c\u6d4b\u8bd5\u3002",
+          "title": "Note",
+          "type": "string"
+        }
+      },
+      "required": [
+        "annotation_tokens_preserved",
+        "fixed_lexically_valid"
+      ],
+      "title": "STChecks",
+      "type": "object"
+    },
+    "STResult": {
+      "additionalProperties": false,
+      "properties": {
+        "summary": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Summary",
+          "type": "string"
+        },
+        "annotated_code": {
+          "anyOf": [
+            {
+              "maxLength": 30000,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Annotated Code"
+        },
+        "test_code": {
+          "anyOf": [
+            {
+              "maxLength": 30000,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Test Code"
+        },
+        "tests": {
+          "items": {
+            "$ref": "#/$defs/STTestCase"
+          },
+          "maxItems": 40,
+          "title": "Tests",
+          "type": "array"
+        },
+        "bugs": {
+          "items": {
+            "$ref": "#/$defs/STBug"
+          },
+          "maxItems": 30,
+          "title": "Bugs",
+          "type": "array"
+        },
+        "fixed_code": {
+          "anyOf": [
+            {
+              "maxLength": 30000,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Fixed Code"
+        },
+        "assumptions": {
+          "items": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 20,
+          "title": "Assumptions",
+          "type": "array"
+        },
+        "scan_verification": {
+          "default": "not_run",
+          "enum": [
+            "passed",
+            "not_supported",
+            "not_run"
+          ],
+          "title": "Scan Verification",
+          "type": "string"
+        },
+        "scan_verification_note": {
+          "default": "",
+          "title": "Scan Verification Note",
+          "type": "string"
+        }
+      },
+      "required": [
+        "summary",
+        "annotated_code",
+        "test_code",
+        "tests",
+        "bugs",
+        "fixed_code",
+        "assumptions"
+      ],
+      "title": "STResult",
+      "type": "object"
+    },
+    "STStart": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "retry_from": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Retry From"
+        },
+        "title": {
+          "default": "ST \u4ee3\u7801\u4f18\u5316",
+          "maxLength": 80,
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "filename": {
+          "default": "source.st",
+          "pattern": "^[^/\\\\\\x00-\\x1f]{1,100}\\.(?i:st|scl|txt)$",
+          "title": "Filename",
+          "type": "string"
+        },
+        "code": {
+          "maxLength": 12000,
+          "minLength": 1,
+          "title": "Code",
+          "type": "string"
+        },
+        "dialect": {
+          "default": "generic",
+          "enum": [
+            "generic",
+            "codesys",
+            "siemens",
+            "twincat"
+          ],
+          "title": "Dialect",
+          "type": "string"
+        },
+        "instructions": {
+          "default": "",
+          "maxLength": 2000,
+          "title": "Instructions",
+          "type": "string"
+        },
+        "actions": {
+          "default": [
+            "comment",
+            "test",
+            "review",
+            "fix"
+          ],
+          "items": {
+            "enum": [
+              "comment",
+              "test",
+              "review",
+              "fix"
+            ],
+            "type": "string"
+          },
+          "maxItems": 4,
+          "minItems": 1,
+          "title": "Actions",
+          "type": "array"
+        }
+      },
+      "required": [
+        "schema_version",
+        "code"
+      ],
+      "title": "STStart",
+      "type": "object"
+    },
+    "STTestCase": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^T[0-9]{3}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "title": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "category": {
+          "enum": [
+            "normal",
+            "boundary",
+            "abnormal",
+            "regression",
+            "scan_cycle"
+          ],
+          "title": "Category",
+          "type": "string"
+        },
+        "preconditions": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Preconditions",
+          "type": "string"
+        },
+        "steps": {
+          "items": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 20,
+          "minItems": 1,
+          "title": "Steps",
+          "type": "array"
+        },
+        "expected": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Expected",
+          "type": "string"
+        },
+        "related_bug_ids": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 30,
+          "title": "Related Bug Ids",
+          "type": "array"
+        },
+        "execution": {
+          "default": "st",
+          "enum": [
+            "st",
+            "manual"
+          ],
+          "title": "Execution",
+          "type": "string"
+        },
+        "adaptation_note": {
+          "default": "",
+          "maxLength": 2000,
+          "title": "Adaptation Note",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "category",
+        "preconditions",
+        "steps",
+        "expected",
+        "related_bug_ids"
+      ],
+      "title": "STTestCase",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "retry_of": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Retry Of"
+    },
+    "reused_stages": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Reused Stages",
+      "type": "array"
+    },
+    "run_id": {
+      "title": "Run Id",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "queued",
+        "running",
+        "completed",
+        "failed",
+        "interrupted",
+        "cancelled"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "created_at": {
+      "title": "Created At",
+      "type": "string"
+    },
+    "updated_at": {
+      "title": "Updated At",
+      "type": "string"
+    },
+    "request": {
+      "$ref": "#/$defs/STStart"
+    },
+    "source_sha256": {
+      "title": "Source Sha256",
+      "type": "string"
+    },
+    "workflow_version": {
+      "const": "st-code-v1",
+      "default": "st-code-v1",
+      "title": "Workflow Version",
+      "type": "string"
+    },
+    "model_id": {
+      "title": "Model Id",
+      "type": "string"
+    },
+    "session_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Session Id"
+    },
+    "attempt_count": {
+      "default": 0,
+      "title": "Attempt Count",
+      "type": "integer"
+    },
+    "validation_feedback": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Validation Feedback",
+      "type": "array"
+    },
+    "stage": {
+      "anyOf": [
+        {
+          "enum": [
+            "review",
+            "annotation",
+            "repair",
+            "tests",
+            "validation"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Stage"
+    },
+    "stage_sessions": {
+      "additionalProperties": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "default": {},
+      "title": "Stage Sessions",
+      "type": "object"
+    },
+    "stage_requests": {
+      "additionalProperties": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "default": {},
+      "title": "Stage Requests",
+      "type": "object"
+    },
+    "stage_results": {
+      "additionalProperties": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "default": {},
+      "title": "Stage Results",
+      "type": "object"
+    },
+    "result": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/STResult"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "checks": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/STChecks"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "artifacts": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/STArtifact"
+      },
+      "title": "Artifacts",
+      "type": "array"
+    },
+    "error": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Error"
+    }
+  },
+  "required": [
+    "schema_version",
+    "run_id",
+    "status",
+    "created_at",
+    "updated_at",
+    "request",
+    "source_sha256",
+    "model_id"
+  ],
+  "title": "STRun",
+  "type": "object"
+}

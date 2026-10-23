@@ -1,0 +1,16 @@
+from typing import Protocol
+
+from packages.contracts.common import ComponentHealth
+from packages.contracts.observations import ObservationSnapshot, SnapshotQuery
+from packages.contracts.trials import TrialRecord, TrialRequest
+
+
+class ObservationSource(Protocol):
+    async def read_snapshot(self, query: SnapshotQuery) -> ObservationSnapshot: ...
+    async def health(self) -> ComponentHealth: ...
+
+
+class CandidateEvaluator(Protocol):
+    async def submit(self, request: TrialRequest) -> TrialRecord: ...
+    async def get(self, trial_id: str) -> TrialRecord: ...
+    async def cancel(self, trial_id: str) -> TrialRecord: ...

@@ -1,0 +1,4 @@
+FUNCTION SafeRatio : REAL
+VAR_INPUT n : REAL; d : REAL; END_VAR
+SafeRatio := n / d;
+END_FUNCTION

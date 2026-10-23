@@ -1,0 +1,394 @@
+{
+  "release": "INTRANET_20261021",
+  "purpose": "Byte-preserving import of maintainable deployment assets; binary assets and live configuration remain local.",
+  "files": [
+    {
+      "path": ".dockerignore",
+      "source": "delivery/intranet-20261021/disc-01/payload/.dockerignore",
+      "sha256": "866340ded1d46232cff5abba9b75873f8fe5e97cd72302b4cf49fd384149a8cb",
+      "bytes": 477
+    },
+    {
+      "path": "Dockerfile",
+      "source": "delivery/intranet-20261021/disc-01/payload/Dockerfile",
+      "sha256": "c9a7e960f638a545bbe6ae3f7fbd69605e47b6cdadf617a81bcc1d65bbbb7ee0",
+      "bytes": 1578
+    },
+    {
+      "path": "INTRANET-UPDATE-20261021.md",
+      "source": "delivery/intranet-20261021/disc-01/payload/INTRANET-UPDATE-20261021.md",
+      "sha256": "d62429828a203dfe9df4feae2afe65b3940867529632ff5b46f3bb03e73fb2a9",
+      "bytes": 21151
+    },
+    {
+      "path": "README.md",
+      "source": "delivery/intranet-20261021/disc-01/payload/README.md",
+      "sha256": "8698973276d52a1e324c51ed00121990e873c434aa804ed19b176860e6acb875",
+      "bytes": 18555
+    },
+    {
+      "path": "build/Dockerfile.office-runtime",
+      "source": "delivery/intranet-20261021/disc-01/payload/build/Dockerfile.office-runtime",
+      "sha256": "c87e178fd4291d670365af7468a23f3e3ea5b5828d4950e97e58134da5b5adcf",
+      "bytes": 306
+    },
+    {
+      "path": "build/Dockerfile.runtime",
+      "source": "delivery/intranet-20261021/disc-01/payload/build/Dockerfile.runtime",
+      "sha256": "8259b01985fc6da1b520d5c85520852f1e5eb550a2603535af0bdfa13eb07738",
+      "bytes": 990
+    },
+    {
+      "path": "build/runtime.py",
+      "source": "delivery/intranet-20261021/disc-01/payload/build/runtime.py",
+      "sha256": "2821bc01fa4cb31dd2bb000157b0db0c4bc506e02b0d665b554d07a6ad85a89d",
+      "bytes": 15979
+    },
+    {
+      "path": "config/demo.env.example",
+      "source": "config/demo.env.example",
+      "sha256": "9a65d56b13397b7e85d3fabcce24ddb65e6f3c6599d9de8da40cb1b956b16136",
+      "bytes": 1050
+    },
+    {
+      "path": "config/vllm.env.example",
+      "source": "config/vllm.env.example",
+      "sha256": "77e2394e8bd0525b4b28395d1b6e87eea6eb430582cb7eeb784c716a3bd2664a",
+      "bytes": 731
+    },
+    {
+      "path": "deploy.sh",
+      "source": "delivery/intranet-20261021/disc-01/payload/deploy.sh",
+      "sha256": "e1b14081eceb197018b9ba85aa60a7817b4c2a47f97a0e48cfdb91c0fff4b176",
+      "bytes": 8106
+    },
+    {
+      "path": "fix-tuning.md",
+      "source": "delivery/intranet-20261021/disc-01/payload/fix-tuning.md",
+      "sha256": "5b6cd96df4ae6590441c6d9d47a7d11ee0b87d263c299b9b15a5dcf5a47e5632",
+      "bytes": 20184
+    },
+    {
+      "path": "fix403.md",
+      "source": "delivery/intranet-20261021/disc-01/payload/fix403.md",
+      "sha256": "12a9c43448e6c130dad33da3d027f7b79dbdd37fddc7e16fc45399a3014b1b6f",
+      "bytes": 53777
+    },
+    {
+      "path": "images/IMAGE-MANIFEST.json",
+      "source": "delivery/intranet-20261021/disc-01/payload/images/IMAGE-MANIFEST.json",
+      "sha256": "fe605fe4811330aff7ffefa2e332506b6784be837f8f4ae541a37f057f4fdd4f",
+      "bytes": 852
+    },
+    {
+      "path": "images/SHA256SUMS",
+      "source": "delivery/intranet-20261021/disc-01/payload/images/SHA256SUMS",
+      "sha256": "546507f926d03cfe6eb1124f980bf7edecc5724e25c211f63c8fbb1e2198deef",
+      "bytes": 95
+    },
+    {
+      "path": "office-v1.md",
+      "source": "delivery/intranet-20261021/disc-01/payload/office-v1.md",
+      "sha256": "08930f514c7356d6d9dbb7f90a37c61bf39f93f154fcb90b4a47123a049a0574",
+      "bytes": 15708
+    },
+    {
+      "path": "runtime/SHA256SUMS",
+      "source": "delivery/intranet-20261021/disc-01/payload/runtime/SHA256SUMS",
+      "sha256": "21fcdc12e2374337266e32db4c269973966a03f8a31324c60253fafc64a5dde8",
+      "bytes": 105
+    },
+    {
+      "path": "runtime/SOURCES.json",
+      "source": "delivery/intranet-20261021/disc-01/payload/runtime/SOURCES.json",
+      "sha256": "baa4f8ebc54ece54c34727d6b6ddcf649b7c3645bb1ddedd120a2b0ad560667b",
+      "bytes": 1114
+    },
+    {
+      "path": "runtime/nvidia-cdi/SHA256SUMS",
+      "source": "delivery/intranet-20261021/disc-01/payload/runtime/nvidia-cdi/SHA256SUMS",
+      "sha256": "a7c01a5e77befc1eb5db6f3fc3fd77d26f4d8f72e3c1ead9d9b1ef11b4069515",
+      "bytes": 415
+    },
+    {
+      "path": "runtime/ripgrep/SHA256SUMS",
+      "source": "delivery/intranet-20261021/disc-01/payload/runtime/ripgrep/SHA256SUMS",
+      "sha256": "bb5f7b767c93c9a91d0eff28d67f5c1dc3e8ca520b7817ef30e9428fefb02aaa",
+      "bytes": 493
+    },
+    {
+      "path": "runtime/ripgrep/upstream.sha256",
+      "source": "delivery/intranet-20261021/disc-01/payload/runtime/ripgrep/upstream.sha256",
+      "sha256": "ad13579c63f6a9c6cab5e8bf093dd4c1673554f39adf940911a52522885ec563",
+      "bytes": 114
+    },
+    {
+      "path": "scripts/check-gpu.py",
+      "source": "delivery/intranet-20261021/disc-01/payload/scripts/check-gpu.py",
+      "sha256": "13c0c7bd7193e0fafdfa7b88bac0a556458409b16f41d7c084c6e9e689f979b7",
+      "bytes": 791
+    },
+    {
+      "path": "scripts/install-docker.sh",
+      "source": "delivery/intranet-20261021/disc-01/payload/scripts/install-docker.sh",
+      "sha256": "0162052d71e2190cc2953b427f8a277d2f5385934a22ee2464ec1fabea6f48eb",
+      "bytes": 3599
+    },
+    {
+      "path": "scripts/install-gpu-support.sh",
+      "source": "delivery/intranet-20261021/disc-01/payload/scripts/install-gpu-support.sh",
+      "sha256": "3931e83900f349dbabe7349fc8a2291e2dd0b430451c5d0a620816d964fb903f",
+      "bytes": 2524
+    },
+    {
+      "path": "scripts/intranet-update.sh",
+      "source": "delivery/intranet-20261021/disc-01/payload/scripts/intranet-update.sh",
+      "sha256": "34bcb90c4c26e49fb0e6bc51c22b6cebe5137867b415c034986dc504f5af53ae",
+      "bytes": 8377
+    },
+    {
+      "path": "scripts/make-dvd.sh",
+      "source": "delivery/intranet-20261021/disc-01/payload/scripts/make-dvd.sh",
+      "sha256": "81ad56e8e9434a6e13ca9d21a4a532a25e03ee83284a554649059f832d661214",
+      "bytes": 3771
+    },
+    {
+      "path": "scripts/make-intranet-disc.py",
+      "source": "delivery/intranet-20261021/disc-01/payload/scripts/make-intranet-disc.py",
+      "sha256": "4bc132692575b2d3ab9339554c608e0fc3df82c88b27597197ff08816e507e84",
+      "bytes": 5697
+    },
+    {
+      "path": "scripts/make-office-disc.py",
+      "source": "delivery/intranet-20261021/disc-01/payload/scripts/make-office-disc.py",
+      "sha256": "41e2ce77ad9263099ec84b89c9b550c0df0b70ed2da35876ba5d6fd46a9d592d",
+      "bytes": 211
+    },
+    {
+      "path": "scripts/make-tuning-disc.py",
+      "source": "delivery/intranet-20261021/disc-01/payload/scripts/make-tuning-disc.py",
+      "sha256": "201c7ce11ccd695bec48bfcab5aec528f5a06bc25199de64606e336fc310b00e",
+      "bytes": 214
+    },
+    {
+      "path": "scripts/prepare-model-metadata.sh",
+      "source": "delivery/intranet-20261021/disc-01/payload/scripts/prepare-model-metadata.sh",
+      "sha256": "2352489839dfa6f729db50e758026dd6dd4947f9c1db5009b187cd71d9992b81",
+      "bytes": 965
+    },
+    {
+      "path": "verification/chrome86_browser.cjs",
+      "source": "delivery/intranet-20261021/disc-01/payload/verification/chrome86_browser.cjs",
+      "sha256": "38032ed7a9186248ad9c2521b7a4a35009caabdadf04011ba9f10e7c017c4ceb",
+      "bytes": 395,
+      "purpose": "TEST-only verification/release tooling; fixed test credentials are synthetic and are never production credentials"
+    },
+    {
+      "path": "verification/container_browser.cjs",
+      "source": "verification/container_browser.cjs",
+      "sha256": "91ca4f9224aaba724d0f184208d50a63097cad8e15b327716e9140eed8c1c7e2",
+      "bytes": 3706,
+      "purpose": "TEST-only verification/release tooling; fixed test credentials are synthetic and are never production credentials"
+    },
+    {
+      "path": "verification/container_checks.py",
+      "source": "verification/container_checks.py",
+      "sha256": "917d039f8a43f0a3016bfe00e8ace3e5881b857e136ba6a2fa880de9a15e0fa0",
+      "bytes": 3131,
+      "purpose": "TEST-only verification/release tooling; fixed test credentials are synthetic and are never production credentials"
+    },
+    {
+      "path": "verification/lan_tcp_checks.py",
+      "source": "delivery/intranet-20261021/disc-01/payload/verification/lan_tcp_checks.py",
+      "sha256": "46a4d5b3c36ce0c66608293c5fd64f39f12e00a424b646f71429f039122aae34",
+      "bytes": 4476,
+      "purpose": "TEST-only verification/release tooling; fixed test credentials are synthetic and are never production credentials"
+    },
+    {
+      "path": "verification/mock_vllm.py",
+      "source": "verification/mock_vllm.py",
+      "sha256": "ca592008760f6027fe92b6584884a8f564e7847b1ed66a3746e21c81c8dc9ed0",
+      "bytes": 3308,
+      "purpose": "TEST-only verification/release tooling; fixed test credentials are synthetic and are never production credentials"
+    },
+    {
+      "path": "verification/preflight_ports.py",
+      "source": "verification/preflight_ports.py",
+      "sha256": "defa4aa34b548564d0379a7afc58891134aeba965088e6e1fc830ad7a9c37286",
+      "bytes": 1016,
+      "purpose": "TEST-only verification/release tooling; fixed test credentials are synthetic and are never production credentials"
+    },
+    {
+      "path": "verification/rehearsal_entry.py",
+      "source": "delivery/intranet-20261021/disc-01/payload/verification/rehearsal_entry.py",
+      "sha256": "33fb2875a0413bf046fcb9bcf531e99c04a54cec708afcda9fc66a280b6dc3e8",
+      "bytes": 2768,
+      "purpose": "TEST-only verification/release tooling; fixed test credentials are synthetic and are never production credentials"
+    },
+    {
+      "path": "verification/rehearsal_model.py",
+      "source": "delivery/intranet-20261021/disc-01/payload/verification/rehearsal_model.py",
+      "sha256": "b56753b76b773c7fcdc15244ce0fe1371f3ebf6c323dfd88763b8059ba8256ea",
+      "bytes": 11651,
+      "purpose": "TEST-only verification/release tooling; fixed test credentials are synthetic and are never production credentials"
+    },
+    {
+      "path": "verification/release-20261021/RESULTS.md",
+      "source": "delivery/intranet-20261021/disc-01/payload/verification/release-20261021/RESULTS.md",
+      "sha256": "7b97ee04272d5d713f676f0db5df18f6d9b50a2ad38de521e9e24b89cae65d4f",
+      "bytes": 7473
+    },
+    {
+      "path": "verification/release-20261021/check_image.py",
+      "source": "verification/release-20261021/check_image.py",
+      "sha256": "f38592fba1555a47672cf559a78738d8b2a352151bf1a7a97c2b7f8556203099",
+      "bytes": 1953,
+      "purpose": "TEST-only verification/release tooling; fixed test credentials are synthetic and are never production credentials"
+    },
+    {
+      "path": "verification/release-20261021/cleanup.json",
+      "source": "delivery/intranet-20261021/disc-01/payload/verification/release-20261021/cleanup.json",
+      "sha256": "b1b9d7de16217af31f56052206faeeb637b57c8422682b03756594e2867702f1",
+      "bytes": 913
+    },
+    {
+      "path": "verification/release-20261021/export_release.py",
+      "source": "verification/release-20261021/export_release.py",
+      "sha256": "c0b018dc19198efc02c388009ec8e64b643addb1ef013048f61dbc3a63d0898c",
+      "bytes": 1980,
+      "purpose": "TEST-only verification/release tooling; fixed test credentials are synthetic and are never production credentials"
+    },
+    {
+      "path": "verification/release-20261021/final-disc-check.json",
+      "source": "verification/release-20261021/final-disc-check.json",
+      "sha256": "42b2f56db22b360df3a91b6e2b02665e47554f8d39fbbc52e018d312d7b31c71",
+      "bytes": 355
+    },
+    {
+      "path": "verification/release-20261021/image-source-check.json",
+      "source": "delivery/intranet-20261021/disc-01/payload/verification/release-20261021/image-source-check.json",
+      "sha256": "5e3dc7f08b1e2479083679ae66b41b63c6d76cc66c1731ccad72beb4335bf95d",
+      "bytes": 15072
+    },
+    {
+      "path": "verification/release-20261021/migration-rollback.json",
+      "source": "delivery/intranet-20261021/disc-01/payload/verification/release-20261021/migration-rollback.json",
+      "sha256": "06b86c11411cc7f0d01c7d2550314c57d63eb3548d8d6408cf7797541feec7e6",
+      "bytes": 863
+    },
+    {
+      "path": "verification/release-20261021/rehearse_update.py",
+      "source": "verification/release-20261021/rehearse_update.py",
+      "sha256": "f453313ada3814861a692b6a53892b229398789b39dbb5b6c2c28ca18ffb960e",
+      "bytes": 6893,
+      "purpose": "TEST-only verification/release tooling; fixed test credentials are synthetic and are never production credentials"
+    },
+    {
+      "path": "verification/run-office-rehearsal.sh",
+      "source": "verification/run-office-rehearsal.sh",
+      "sha256": "959db3f317d8f76da90552cde25d6e45bc17e8e9c7efe449c9e64fc7a2af9ccc",
+      "bytes": 2907,
+      "purpose": "TEST-only verification/release tooling; fixed test credentials are synthetic and are never production credentials"
+    },
+    {
+      "path": "verification/run-rehearsal.sh",
+      "source": "verification/run-rehearsal.sh",
+      "sha256": "b9b0f992e57207f00e6090a532262d4aab822ac1425c3c8e2aab3ae4d7aae344",
+      "bytes": 2745,
+      "purpose": "TEST-only verification/release tooling; fixed test credentials are synthetic and are never production credentials"
+    },
+    {
+      "path": "verification/test_lan_runtime.py",
+      "source": "delivery/intranet-20261021/disc-01/payload/verification/test_lan_runtime.py",
+      "sha256": "8ca0ef296483954047ce0040d8db81ae8416b579bdaeab144a67da52685efdbf",
+      "bytes": 4013,
+      "purpose": "TEST-only verification/release tooling; fixed test credentials are synthetic and are never production credentials"
+    },
+    {
+      "path": "verification/test_mcp_config.py",
+      "source": "delivery/intranet-20261021/disc-01/payload/verification/test_mcp_config.py",
+      "sha256": "37b1389e9fbecf9c19da58ead3bd4075f4ecd7a440380cfd2e914e8e1a56961b",
+      "bytes": 2162,
+      "purpose": "TEST-only verification/release tooling; fixed test credentials are synthetic and are never production credentials"
+    },
+    {
+      "path": "verification/vllm_cli_parser.py",
+      "source": "verification/vllm_cli_parser.py",
+      "sha256": "8cb5f0b21a705e77923c9a6086acc8b548c59e8ab0b52a7167a83d4a82769c68",
+      "bytes": 491,
+      "purpose": "TEST-only verification/release tooling; fixed test credentials are synthetic and are never production credentials"
+    },
+    {
+      "path": "verification/vllm_static_check.py",
+      "source": "verification/vllm_static_check.py",
+      "sha256": "a7d8321887dea6f286eed3af90ac708c713733b225f168687484a753e62547f9",
+      "bytes": 2118,
+      "purpose": "TEST-only verification/release tooling; fixed test credentials are synthetic and are never production credentials"
+    },
+    {
+      "path": "vllm.sh",
+      "source": "vllm.sh",
+      "sha256": "d37bc660f137d3894679e78666f4d0e13f7e2e142b4918a42eede5a731a324bc",
+      "bytes": 7904
+    },
+    {
+      "path": "vllm/COMPAT-MANIFEST.json",
+      "source": "vllm/COMPAT-MANIFEST.json",
+      "sha256": "0cb709a6ef4b1d442d941fda7060105e05773dda04d2d8de3abab9ccb1a30a3a",
+      "bytes": 761
+    },
+    {
+      "path": "vllm/COMPAT-SHA256SUMS",
+      "source": "vllm/COMPAT-SHA256SUMS",
+      "sha256": "ef1e3e10f1cfc35484eed3ad2eab5077e727ae7f12495d62ebea7d2c431b5320",
+      "bytes": 19797
+    },
+    {
+      "path": "vllm/IMAGE-MANIFEST.json",
+      "source": "vllm/IMAGE-MANIFEST.json",
+      "sha256": "b0a9efc4664a5c6e2d1a82af53e895d0d3f8bcb534e7a615b375a551f4467a84",
+      "bytes": 1530
+    },
+    {
+      "path": "vllm/MODEL-METADATA-SHA256SUMS",
+      "source": "vllm/MODEL-METADATA-SHA256SUMS",
+      "sha256": "d7c6f1f5a754176bee17f6309c4d629ade2ddef51be7ad4be126399bd5c51724",
+      "bytes": 1153
+    },
+    {
+      "path": "vllm/MODEL-METADATA.json",
+      "source": "vllm/MODEL-METADATA.json",
+      "sha256": "5ef9b26290e8625ac3f3f0801a2d9aa39d080a1c1c0de7fd1bb15cf294a0f1ae",
+      "bytes": 3334
+    },
+    {
+      "path": "vllm/README.md",
+      "source": "vllm/README.md",
+      "sha256": "e8826b2af27f1a67e50b20f6cb1cb99c1c276ce1a267fa76c28111960b87c977",
+      "bytes": 7589
+    },
+    {
+      "path": "vllm/SHA256SUMS",
+      "source": "vllm/SHA256SUMS",
+      "sha256": "ad94dd0828c11c3fedcd4ee23aac4f34f5981a32c04bd827a4bcd1056236bd6c",
+      "bytes": 89
+    },
+    {
+      "path": "vllm/upstream-image-config.json",
+      "source": "vllm/upstream-image-config.json",
+      "sha256": "423783aac4fefebfe6b67d6fc2810b88a1d4dc08ed8bba587c80b0d8973e0b8b",
+      "bytes": 45420
+    },
+    {
+      "path": "vllm/upstream-manifest.json",
+      "source": "vllm/upstream-manifest.json",
+      "sha256": "b18abb2df97b8f798e81862bd93f872ea18613372e2c3adc0cc2ac21e66ac12f",
+      "bytes": 8680
+    }
+  ],
+  "excluded": [
+    "live config and runtime credentials",
+    "binary images and third-party dependencies",
+    "historical logs, user task output, databases and backups"
+  ]
+}

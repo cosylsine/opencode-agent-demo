@@ -1,0 +1,324 @@
+{
+  "$defs": {
+    "Metrics": {
+      "additionalProperties": false,
+      "properties": {
+        "metrics_version": {
+          "title": "Metrics Version",
+          "type": "string"
+        },
+        "signed_steady_error": {
+          "title": "Signed Steady Error",
+          "type": "number"
+        },
+        "steady_state_error": {
+          "title": "Steady State Error",
+          "type": "number"
+        },
+        "iae": {
+          "title": "Iae",
+          "type": "number"
+        },
+        "overshoot_ratio": {
+          "title": "Overshoot Ratio",
+          "type": "number"
+        },
+        "pressure_std": {
+          "title": "Pressure Std",
+          "type": "number"
+        },
+        "settling_time_s": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Settling Time S"
+        },
+        "unavailable_reasons": {
+          "items": {
+            "maxLength": 2000,
+            "type": "string"
+          },
+          "maxItems": 10,
+          "title": "Unavailable Reasons",
+          "type": "array"
+        }
+      },
+      "required": [
+        "metrics_version",
+        "signed_steady_error",
+        "steady_state_error",
+        "iae",
+        "overshoot_ratio",
+        "pressure_std",
+        "settling_time_s",
+        "unavailable_reasons"
+      ],
+      "title": "Metrics",
+      "type": "object"
+    },
+    "MonitorPolicy": {
+      "additionalProperties": false,
+      "properties": {
+        "allowed_assessments": {
+          "items": {
+            "enum": [
+              "NORMAL_STABLE",
+              "STEADY_HIGH",
+              "STEADY_LOW",
+              "EXCESSIVE_OVERSHOOT",
+              "SUSTAINED_OSCILLATION",
+              "SLOW_RESPONSE",
+              "OPERATING_CONDITION_CHANGED",
+              "DATA_ANOMALY",
+              "UNCERTAIN"
+            ],
+            "type": "string"
+          },
+          "maxItems": 9,
+          "title": "Allowed Assessments",
+          "type": "array"
+        },
+        "confidence_threshold": {
+          "title": "Confidence Threshold",
+          "type": "number"
+        },
+        "target_error": {
+          "title": "Target Error",
+          "type": "number"
+        },
+        "target_overshoot": {
+          "title": "Target Overshoot",
+          "type": "number"
+        },
+        "target_std": {
+          "title": "Target Std",
+          "type": "number"
+        },
+        "target_settling": {
+          "title": "Target Settling",
+          "type": "number"
+        }
+      },
+      "required": [
+        "allowed_assessments",
+        "confidence_threshold",
+        "target_error",
+        "target_overshoot",
+        "target_std",
+        "target_settling"
+      ],
+      "title": "MonitorPolicy",
+      "type": "object"
+    },
+    "PID": {
+      "additionalProperties": {
+        "type": "number"
+      },
+      "description": "A named numeric parameter set. kp/ki/kd remain the example's parameters.",
+      "title": "PID",
+      "type": "object"
+    },
+    "PidSnapshot": {
+      "additionalProperties": false,
+      "properties": {
+        "pid": {
+          "$ref": "#/$defs/PID"
+        },
+        "pid_version": {
+          "title": "Pid Version",
+          "type": "string"
+        },
+        "effective_at": {
+          "title": "Effective At",
+          "type": "string"
+        },
+        "pid_form": {
+          "title": "Pid Form",
+          "type": "string"
+        },
+        "parameter_units": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Parameter Units",
+          "type": "object"
+        },
+        "operating_condition_version": {
+          "title": "Operating Condition Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "pid",
+        "pid_version",
+        "effective_at",
+        "pid_form",
+        "parameter_units",
+        "operating_condition_version"
+      ],
+      "title": "PidSnapshot",
+      "type": "object"
+    },
+    "QualityReport": {
+      "additionalProperties": false,
+      "properties": {
+        "valid": {
+          "title": "Valid",
+          "type": "boolean"
+        },
+        "sample_count": {
+          "title": "Sample Count",
+          "type": "integer"
+        },
+        "missing_count": {
+          "title": "Missing Count",
+          "type": "integer"
+        },
+        "bad_count": {
+          "title": "Bad Count",
+          "type": "integer"
+        },
+        "reason_codes": {
+          "items": {
+            "maxLength": 2000,
+            "type": "string"
+          },
+          "maxItems": 10,
+          "title": "Reason Codes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "valid",
+        "sample_count",
+        "missing_count",
+        "bad_count",
+        "reason_codes"
+      ],
+      "title": "QualityReport",
+      "type": "object"
+    },
+    "RuleAssessment": {
+      "additionalProperties": false,
+      "properties": {
+        "assessment": {
+          "enum": [
+            "NORMAL_STABLE",
+            "STEADY_HIGH",
+            "STEADY_LOW",
+            "EXCESSIVE_OVERSHOOT",
+            "SUSTAINED_OSCILLATION",
+            "SLOW_RESPONSE",
+            "OPERATING_CONDITION_CHANGED",
+            "DATA_ANOMALY",
+            "UNCERTAIN"
+          ],
+          "title": "Assessment",
+          "type": "string"
+        },
+        "reason_codes": {
+          "items": {
+            "maxLength": 2000,
+            "type": "string"
+          },
+          "maxItems": 10,
+          "title": "Reason Codes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "assessment",
+        "reason_codes"
+      ],
+      "title": "RuleAssessment",
+      "type": "object"
+    },
+    "SourceKind": {
+      "enum": [
+        "EXAMPLE",
+        "SIMULATION",
+        "REAL"
+      ],
+      "title": "SourceKind",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "request_id": {
+      "title": "Request Id",
+      "type": "string"
+    },
+    "run_id": {
+      "title": "Run Id",
+      "type": "string"
+    },
+    "control_loop_id": {
+      "title": "Control Loop Id",
+      "type": "string"
+    },
+    "source_kind": {
+      "$ref": "#/$defs/SourceKind"
+    },
+    "call_context_token": {
+      "minLength": 16,
+      "title": "Call Context Token",
+      "type": "string"
+    },
+    "snapshot_id": {
+      "title": "Snapshot Id",
+      "type": "string"
+    },
+    "target_pressure": {
+      "title": "Target Pressure",
+      "type": "number"
+    },
+    "pressure_unit": {
+      "title": "Pressure Unit",
+      "type": "string"
+    },
+    "actual_pid": {
+      "$ref": "#/$defs/PidSnapshot"
+    },
+    "quality": {
+      "$ref": "#/$defs/QualityReport"
+    },
+    "metrics": {
+      "$ref": "#/$defs/Metrics"
+    },
+    "rule_assessment": {
+      "$ref": "#/$defs/RuleAssessment"
+    },
+    "policy": {
+      "$ref": "#/$defs/MonitorPolicy"
+    }
+  },
+  "required": [
+    "schema_version",
+    "request_id",
+    "run_id",
+    "control_loop_id",
+    "source_kind",
+    "call_context_token",
+    "snapshot_id",
+    "target_pressure",
+    "pressure_unit",
+    "actual_pid",
+    "quality",
+    "metrics",
+    "rule_assessment",
+    "policy"
+  ],
+  "title": "MonitorRequest",
+  "type": "object"
+}
